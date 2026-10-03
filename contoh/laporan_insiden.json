@@ -1,0 +1,92 @@
+{
+  "llm": {
+    "judul": "Latensi asisten LLM internal naik 3 kali lipat",
+    "layanan_terdampak": "Asisten back-office (server LLM Qwen3.5-4B, GPU T4)",
+    "waktu_mulai": "2026-10-09 08:40",
+    "waktu_terdeteksi": "2026-10-09 09:05",
+    "waktu_pulih": "2026-10-09 10:20",
+    "dampak": "Sedang",
+    "urgensi": "Tinggi",
+    "dampak_uraian": "Sekitar 60 pengguna unit pengadaan dan sekretariat menunggu 30–60 detik per jawaban; tidak ada data yang hilang.",
+    "ringkasan": "Waktu jawab asisten naik dari sekitar 10 detik menjadi 30–60 detik. Penyebabnya GPU server di-throttle oleh batas daya sehingga clock turun ke sekitar 400 MHz. Layanan pulih setelah dipindah ke host GPU lain.",
+    "linimasa": [
+      {
+        "waktu": "2026-10-09 08:40",
+        "kejadian": "Latensi p50 mulai naik di dasbor."
+      },
+      {
+        "waktu": "2026-10-09 09:05",
+        "kejadian": "Keluhan pertama dari unit pengadaan; insiden dibuka."
+      },
+      {
+        "waktu": "2026-10-09 09:30",
+        "kejadian": "nvidia-smi menunjukkan clock SM 360–435 MHz, alasan throttle SW power cap."
+      },
+      {
+        "waktu": "2026-10-09 10:20",
+        "kejadian": "Layanan dipindah ke host GPU baru; latensi kembali normal."
+      }
+    ],
+    "akar_masalah": "Host GPU membatasi daya kartu di 70 W pada suhu 76 °C sehingga clock turun ke sekitar 25% dari maksimum. Tidak ada perubahan kode atau konfigurasi.",
+    "tindakan_pemulihan": "Server LLM dipindah ke host GPU lain dan cache model dihangatkan ulang; latensi diverifikasi kembali ke sekitar 10 detik.",
+    "tindak_lanjut": [
+      {
+        "tugas": "Tambahkan alarm clock SM dan alasan throttle GPU ke dasbor",
+        "pic": "Dimas Prasetyo",
+        "tenggat": "2026-10-16"
+      },
+      {
+        "tugas": "Tulis runbook pindah host GPU",
+        "pic": "Rina Kartika",
+        "tenggat": "2026-10-20"
+      }
+    ],
+    "pelapor": "Bayu Saputra"
+  },
+  "program": {
+    "nomor": "INS/TI/2026/10/0004",
+    "tanggal": "9 Oktober 2026",
+    "severity": "P2",
+    "severity_label": "P2 · Tinggi — target pemulihan 4 jam",
+    "sev_warna": "D97706",
+    "status": "Pulih",
+    "durasi": "1 jam 40 menit",
+    "jabatan_penanggung_jawab": "Kepala Divisi Teknologi Informasi",
+    "waktu_mulai": "9 Oktober 2026 08:40 WIB",
+    "waktu_terdeteksi": "9 Oktober 2026 09:05 WIB",
+    "waktu_pulih": "9 Oktober 2026 10:20 WIB",
+    "linimasa": [
+      {
+        "waktu": "08:40 WIB",
+        "kejadian": "Latensi p50 mulai naik di dasbor."
+      },
+      {
+        "waktu": "09:05 WIB",
+        "kejadian": "Keluhan pertama dari unit pengadaan; insiden dibuka."
+      },
+      {
+        "waktu": "09:30 WIB",
+        "kejadian": "nvidia-smi menunjukkan clock SM 360–435 MHz, alasan throttle SW power cap."
+      },
+      {
+        "waktu": "10:20 WIB",
+        "kejadian": "Layanan dipindah ke host GPU baru; latensi kembali normal."
+      }
+    ],
+    "tindak_lanjut": [
+      {
+        "tugas": "Tambahkan alarm clock SM dan alasan throttle GPU ke dasbor",
+        "pic": "Dimas Prasetyo",
+        "tenggat": "16 Oktober 2026",
+        "no": 1
+      },
+      {
+        "tugas": "Tulis runbook pindah host GPU",
+        "pic": "Rina Kartika",
+        "tenggat": "20 Oktober 2026",
+        "no": 2
+      }
+    ],
+    "peringatan": []
+  }
+}

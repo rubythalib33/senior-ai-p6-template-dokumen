@@ -1,0 +1,85 @@
+{
+  "llm": {
+    "unit_pemohon": "Divisi Data & AI",
+    "nama_pemohon": "Dimas Prasetyo",
+    "jabatan_pemohon": "Manajer Data Engineering",
+    "perihal": "Pengadaan 12 unit laptop dan docking station untuk tim data",
+    "jenis_pengadaan": "Barang",
+    "latar_belakang": "Tim data bertambah 12 orang pada kuartal IV 2026 untuk proyek asisten back-office berbasis LLM. Laptop yang ada tidak mampu menjalankan notebook dan kontainer pengembangan secara lokal, sehingga pekerjaan menumpuk di server bersama. Tanpa perangkat baru, jadwal pilot Desember 2026 mundur minimal satu bulan.",
+    "items": [
+      {
+        "uraian": "Laptop pengembang",
+        "spesifikasi": "CPU 8 core, RAM 32 GB, SSD 1 TB, layar 14 inci, garansi 3 tahun",
+        "jumlah": 12,
+        "satuan": "unit",
+        "harga_satuan": 18500000
+      },
+      {
+        "uraian": "Docking station USB-C",
+        "spesifikasi": "2 layar eksternal, LAN gigabit, daya 100 W",
+        "jumlah": 12,
+        "satuan": "unit",
+        "harga_satuan": 2150000
+      }
+    ],
+    "kebutuhan_tanggal": "2026-11-16",
+    "sumber_anggaran": "Anggaran Capex Divisi Data & AI 2026"
+  },
+  "program": {
+    "subtotal": "247.800.000",
+    "ppn_persen": 11,
+    "ppn": "27.258.000",
+    "total": "275.058.000",
+    "total_terbilang": "Dua ratus tujuh puluh lima juta lima puluh delapan ribu rupiah",
+    "items": [
+      {
+        "uraian": "Laptop pengembang",
+        "spesifikasi": "CPU 8 core, RAM 32 GB, SSD 1 TB, layar 14 inci, garansi 3 tahun",
+        "jumlah": 12,
+        "satuan": "unit",
+        "harga_satuan": "18.500.000",
+        "no": 1,
+        "jumlah_harga": "222.000.000"
+      },
+      {
+        "uraian": "Docking station USB-C",
+        "spesifikasi": "2 layar eksternal, LAN gigabit, daya 100 W",
+        "jumlah": 12,
+        "satuan": "unit",
+        "harga_satuan": "2.150.000",
+        "no": 2,
+        "jumlah_harga": "25.800.000"
+      }
+    ],
+    "nomor": "MPP/DAI/2026/10/0042",
+    "tanggal": "5 Oktober 2026",
+    "kepada": "Kepala Unit Pengadaan",
+    "kebutuhan_tanggal": "16 November 2026",
+    "metode_pengadaan": "Pemilihan langsung",
+    "min_penawaran": 3,
+    "dasar_metode": "SOP Pengadaan SOP-PGD-01 Pasal 5 ayat (2): nilai di atas Rp200 juta s.d. Rp1 miliar",
+    "peringatan": [
+      "Dalam 90 hari terakhir Divisi Data & AI sudah mengajukan pembelian laptop senilai Rp96.000.000. Pastikan permintaan ini bukan pemecahan paket (SOP-PGD-01 Pasal 9)."
+    ],
+    "lampiran": [
+      "Spesifikasi teknis / kerangka acuan kerja",
+      "Minimal 3 penawaran harga tertulis dari vendor berbeda",
+      "Harga perkiraan sendiri (HPS)",
+      "Konfirmasi ketersediaan anggaran dari Divisi Keuangan"
+    ],
+    "persetujuan": [
+      {
+        "tingkat": "1",
+        "jabatan": "Kepala Divisi Data & AI"
+      },
+      {
+        "tingkat": "2",
+        "jabatan": "Kepala Divisi Keuangan"
+      },
+      {
+        "tingkat": "3",
+        "jabatan": "Direktur Operasional"
+      }
+    ]
+  }
+}

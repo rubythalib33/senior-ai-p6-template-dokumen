@@ -1,0 +1,25 @@
+{
+  "llm": {
+    "kepada": "Kepala Divisi Keuangan",
+    "dari": "Kepala Divisi Data & AI",
+    "tembusan": [
+      "Direktur Operasional",
+      "Kepala Divisi Teknologi Informasi"
+    ],
+    "sifat": "Segera",
+    "lampiran": "1 berkas",
+    "perihal": "Permohonan akses data transaksi untuk pilot prediksi keterlambatan pembayaran",
+    "isi": [
+      "Dalam rangka pilot model prediksi keterlambatan pembayaran pelanggan yang dijadwalkan mulai November 2026, Divisi Data & AI memerlukan akses baca ke data transaksi penagihan periode Januari 2024 sampai September 2026.",
+      "Data akan diproses di lingkungan analitik internal, tanpa menyalin data identitas pelanggan ke luar sistem. Rincian kolom yang dibutuhkan dan kontrol akses yang diusulkan kami lampirkan.",
+      "Kami mohon persetujuan Bapak paling lambat 16 Oktober 2026 agar pengujian model dapat dimulai sesuai jadwal."
+    ],
+    "nama_penandatangan": "Hendra Wijaya",
+    "jabatan_penandatangan": "Kepala Divisi Data & AI"
+  },
+  "program": {
+    "nomor": "ND/DAI/2026/10/0031",
+    "tanggal": "7 Oktober 2026",
+    "tembusan_teks": "Direktur Operasional, Kepala Divisi Teknologi Informasi"
+  }
+}

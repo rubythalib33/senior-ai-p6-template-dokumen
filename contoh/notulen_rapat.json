@@ -1,0 +1,107 @@
+{
+  "llm": {
+    "judul_rapat": "Evaluasi pilot asisten back-office minggu ke-2",
+    "tanggal_rapat": "2026-10-08",
+    "waktu_mulai": "13:30",
+    "waktu_selesai": "14:45",
+    "tempat": "Ruang Rapat Lt. 7 dan daring",
+    "pimpinan_rapat": "Hendra Wijaya",
+    "notulis": "Sari Utami",
+    "peserta": [
+      "Hendra Wijaya (Kepala Divisi Data & AI)",
+      "Dimas Prasetyo (Manajer Data Engineering)",
+      "Rina Kartika (Manajer Implementasi AI)",
+      "Bayu Saputra (Unit Pengadaan)",
+      "Sari Utami (Sekretariat)"
+    ],
+    "agenda": [
+      "Hasil uji pemicuan skill",
+      "Keluhan pengguna unit pengadaan",
+      "Rencana perluasan ke Divisi Keuangan"
+    ],
+    "pembahasan": [
+      {
+        "agenda": "Hasil uji pemicuan skill",
+        "ringkasan": "Ketepatan pemicuan 36 dari 40 prompt. Kesalahan terbanyak: permintaan penawaran ke klien terpicu sebagai pengadaan."
+      },
+      {
+        "agenda": "Keluhan pengguna unit pengadaan",
+        "ringkasan": "Nomor memo sempat tidak urut karena dua pengguna membuat memo bersamaan; perlu penomoran terpusat."
+      },
+      {
+        "agenda": "Rencana perluasan ke Divisi Keuangan",
+        "ringkasan": "Keuangan meminta skill reimbursement; SOP-nya sedang direvisi dan baru final akhir Oktober."
+      }
+    ],
+    "keputusan": [
+      "Deskripsi skill surat penawaran dipertegas dengan kata kunci klien eksternal.",
+      "Penomoran dokumen dipindah ke layanan terpusat sebelum perluasan.",
+      "Perluasan ke Divisi Keuangan ditunda sampai SOP reimbursement final."
+    ],
+    "tindak_lanjut": [
+      {
+        "tugas": "Revisi deskripsi skill surat penawaran dan uji ulang 40 prompt",
+        "pic": "Rina Kartika",
+        "tenggat": "2026-10-15"
+      },
+      {
+        "tugas": "Rancang layanan penomoran dokumen terpusat",
+        "pic": "Dimas Prasetyo",
+        "tenggat": "2026-10-22"
+      },
+      {
+        "tugas": "Kumpulkan SOP reimbursement versi final",
+        "pic": "",
+        "tenggat": ""
+      }
+    ]
+  },
+  "program": {
+    "nomor": "NOT/DAI/2026/10/0009",
+    "tanggal": "8 Oktober 2026",
+    "tanggal_rapat": "Kamis, 8 Oktober 2026",
+    "pembahasan": [
+      {
+        "agenda": "Hasil uji pemicuan skill",
+        "ringkasan": "Ketepatan pemicuan 36 dari 40 prompt. Kesalahan terbanyak: permintaan penawaran ke klien terpicu sebagai pengadaan.",
+        "no": 1
+      },
+      {
+        "agenda": "Keluhan pengguna unit pengadaan",
+        "ringkasan": "Nomor memo sempat tidak urut karena dua pengguna membuat memo bersamaan; perlu penomoran terpusat.",
+        "no": 2
+      },
+      {
+        "agenda": "Rencana perluasan ke Divisi Keuangan",
+        "ringkasan": "Keuangan meminta skill reimbursement; SOP-nya sedang direvisi dan baru final akhir Oktober.",
+        "no": 3
+      }
+    ],
+    "tindak_lanjut": [
+      {
+        "no": 1,
+        "tugas": "Revisi deskripsi skill surat penawaran dan uji ulang 40 prompt",
+        "pic": "Rina Kartika",
+        "tenggat": "15 Oktober 2026",
+        "catatan": ""
+      },
+      {
+        "no": 2,
+        "tugas": "Rancang layanan penomoran dokumen terpusat",
+        "pic": "Dimas Prasetyo",
+        "tenggat": "22 Oktober 2026",
+        "catatan": ""
+      },
+      {
+        "no": 3,
+        "tugas": "Kumpulkan SOP reimbursement versi final",
+        "pic": "–",
+        "tenggat": "–",
+        "catatan": "PIC dan tenggat belum ditentukan"
+      }
+    ],
+    "peringatan": [
+      "Tindak lanjut no. 3 belum memiliki PIC dan tenggat; tetapkan sebelum notulen diedarkan."
+    ]
+  }
+}

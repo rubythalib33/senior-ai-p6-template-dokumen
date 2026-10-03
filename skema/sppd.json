@@ -1,0 +1,107 @@
+{
+  "tool": {
+    "type": "function",
+    "function": {
+      "name": "isi_sppd",
+      "description": "Isi surat perintah perjalanan dinas (SPPD) untuk seorang pegawai. Isi hanya dari informasi yang diberikan pengguna; bila ada field wajib yang tidak diketahui, tanyakan ke pengguna, jangan mengarang. Nomor dokumen, tanggal surat, total, pajak, dan persetujuan diisi otomatis oleh sistem.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "nama_pegawai": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60,
+            "description": "Nama pegawai yang berangkat."
+          },
+          "jabatan": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60,
+            "description": "Jabatan pegawai."
+          },
+          "tingkat": {
+            "type": "string",
+            "enum": [
+              "Staf",
+              "Supervisor",
+              "Manajer",
+              "Kepala Divisi",
+              "Direksi"
+            ],
+            "description": "Tingkat jabatan untuk tarif."
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "Divisi Data & AI",
+              "Divisi Teknologi Informasi",
+              "Divisi Keuangan",
+              "Divisi SDM & Umum",
+              "Divisi Pemasaran",
+              "Divisi Operasional"
+            ]
+          },
+          "maksud_perjalanan": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "description": "Tujuan dinas, mis. 'Audit implementasi model di kantor klien'."
+          },
+          "kota_tujuan": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "description": "Nama kota tujuan."
+          },
+          "tanggal_berangkat": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "Format YYYY-MM-DD."
+          },
+          "tanggal_kembali": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "Format YYYY-MM-DD."
+          },
+          "moda_transportasi": {
+            "type": "string",
+            "enum": [
+              "Pesawat",
+              "Kereta api",
+              "Bus",
+              "Kendaraan dinas"
+            ]
+          }
+        },
+        "required": [
+          "nama_pegawai",
+          "jabatan",
+          "tingkat",
+          "unit",
+          "maksud_perjalanan",
+          "kota_tujuan",
+          "tanggal_berangkat",
+          "tanggal_kembali",
+          "moda_transportasi"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "field_program": {
+    "nomor": "Nomor SPPD",
+    "tanggal": "Tanggal surat",
+    "pemberi_tugas": "Jabatan pemberi tugas sesuai SOP",
+    "nama_pemberi_tugas": "Nama pemberi tugas",
+    "kota_asal": "Kota kantor asal",
+    "lama_hari": "Jumlah hari",
+    "lama_malam": "Jumlah malam",
+    "biaya": "Rincian [{no, komponen, volume, satuan, tarif, jumlah}] dari tabel tarif",
+    "total": "Rupiah terformat",
+    "total_terbilang": "Terbilang",
+    "peringatan": "Daftar peringatan",
+    "ketentuan": "Ketentuan pertanggungjawaban",
+    "tanggal_berangkat": "Format Indonesia",
+    "tanggal_kembali": "Format Indonesia"
+  }
+}

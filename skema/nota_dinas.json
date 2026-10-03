@@ -1,0 +1,99 @@
+{
+  "tool": {
+    "type": "function",
+    "function": {
+      "name": "isi_nota_dinas",
+      "description": "Isi nota dinas: surat resmi internal antar-unit. Isi hanya dari informasi yang diberikan pengguna; bila ada field wajib yang tidak diketahui, tanyakan ke pengguna, jangan mengarang. Nomor dokumen, tanggal surat, total, pajak, dan persetujuan diisi otomatis oleh sistem.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "kepada": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "description": "Jabatan penerima, mis. 'Kepala Divisi Keuangan'."
+          },
+          "dari": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "description": "Jabatan pengirim."
+          },
+          "tembusan": {
+            "type": "array",
+            "maxItems": 6,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "description": "Jabatan."
+            },
+            "description": "Jabatan penerima tembusan; boleh kosong."
+          },
+          "sifat": {
+            "type": "string",
+            "enum": [
+              "Biasa",
+              "Segera",
+              "Sangat segera",
+              "Rahasia"
+            ]
+          },
+          "lampiran": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60,
+            "description": "Mis. '1 berkas' atau '-'."
+          },
+          "perihal": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "description": "Pokok surat."
+          },
+          "isi": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 6,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 900,
+              "description": "Satu butir."
+            },
+            "description": "Paragraf isi surat, 1–6 paragraf, bahasa resmi."
+          },
+          "nama_penandatangan": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60,
+            "description": "Nama penanda tangan."
+          },
+          "jabatan_penandatangan": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "description": "Jabatan penanda tangan."
+          }
+        },
+        "required": [
+          "kepada",
+          "dari",
+          "tembusan",
+          "sifat",
+          "lampiran",
+          "perihal",
+          "isi",
+          "nama_penandatangan",
+          "jabatan_penandatangan"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "field_program": {
+    "nomor": "Nomor nota dinas",
+    "tanggal": "Tanggal surat",
+    "tembusan_teks": "Tembusan digabung dengan koma, atau '-'"
+  }
+}

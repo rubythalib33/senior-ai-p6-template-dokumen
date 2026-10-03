@@ -1,0 +1,66 @@
+{
+  "llm": {
+    "nama_pegawai": "Rina Kartika",
+    "jabatan": "Manajer Implementasi AI",
+    "tingkat": "Manajer",
+    "unit": "Divisi Data & AI",
+    "maksud_perjalanan": "Pendampingan go-live asisten back-office di kantor cabang Makassar",
+    "kota_tujuan": "Makassar",
+    "tanggal_berangkat": "2026-10-13",
+    "tanggal_kembali": "2026-10-15",
+    "moda_transportasi": "Pesawat"
+  },
+  "program": {
+    "nomor": "SPPD/DAI/2026/10/0117",
+    "tanggal": "6 Oktober 2026",
+    "pemberi_tugas": "Kepala Divisi Data & AI",
+    "nama_pemberi_tugas": "Hendra Wijaya",
+    "kota_asal": "Jakarta",
+    "lama_hari": 3,
+    "lama_malam": 2,
+    "biaya": [
+      {
+        "no": 1,
+        "komponen": "Uang harian",
+        "volume": 3,
+        "satuan": "hari",
+        "tarif": "530.000",
+        "jumlah": "1.590.000"
+      },
+      {
+        "no": 2,
+        "komponen": "Penginapan",
+        "volume": 2,
+        "satuan": "malam",
+        "tarif": "1.250.000",
+        "jumlah": "2.500.000"
+      },
+      {
+        "no": 3,
+        "komponen": "Tiket pesawat pergi-pulang (perkiraan)",
+        "volume": 1,
+        "satuan": "paket",
+        "tarif": "4.200.000",
+        "jumlah": "4.200.000"
+      },
+      {
+        "no": 4,
+        "komponen": "Transportasi lokal",
+        "volume": 3,
+        "satuan": "hari",
+        "tarif": "300.000",
+        "jumlah": "900.000"
+      }
+    ],
+    "total": "9.190.000",
+    "total_terbilang": "Sembilan juta seratus sembilan puluh ribu rupiah",
+    "peringatan": [],
+    "tanggal_berangkat": "Selasa, 13 Oktober 2026",
+    "tanggal_kembali": "Kamis, 15 Oktober 2026",
+    "ketentuan": [
+      "Uang muka maksimal 80% dari total biaya, dicairkan paling lambat H-2.",
+      "Bukti tiket, boarding pass, dan tagihan hotel diserahkan paling lambat 5 hari kerja setelah kembali.",
+      "Kelebihan uang muka dikembalikan; kekurangan dibayarkan setelah verifikasi Divisi Keuangan."
+    ]
+  }
+}

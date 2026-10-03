@@ -1,0 +1,65 @@
+{
+  "llm": {
+    "nama_klien": "PT Contoh Klien Sejahtera",
+    "alamat_klien": "Jl. Ilustrasi No. 8, Surabaya 60271",
+    "up": "Ibu Maya Lestari, Kepala Divisi Analitik",
+    "perihal": "Penawaran pelatihan Generative AI untuk tim analitik",
+    "pembuka": "Menindaklanjuti diskusi pada 2 Oktober 2026 mengenai rencana pemanfaatan generative AI di tim analitik Bapak/Ibu, bersama ini kami sampaikan penawaran pelatihan praktik tiga hari beserta pendampingan identifikasi use case pertama.",
+    "ruang_lingkup": [
+      "Pelatihan praktik 3 hari: prompt engineering, RAG, dan evaluasi model untuk 25 peserta",
+      "Lab cloud siap pakai selama pelatihan, termasuk akses GPU",
+      "Pendampingan 1 paket untuk memilih dan membuat prototipe use case pertama"
+    ],
+    "items": [
+      {
+        "uraian": "Pelatihan Generative AI 3 hari",
+        "jumlah": 25,
+        "satuan": "peserta",
+        "harga_satuan": 4500000
+      },
+      {
+        "uraian": "Pendampingan use case dan prototipe",
+        "jumlah": 1,
+        "satuan": "paket",
+        "harga_satuan": 25000000
+      }
+    ],
+    "masa_berlaku_hari": 30,
+    "syarat_pembayaran": "50% setelah PO terbit, 50% setelah berita acara serah terima",
+    "nama_penandatangan": "Andini Putri",
+    "jabatan_penandatangan": "Kepala Divisi Pemasaran"
+  },
+  "program": {
+    "subtotal": "137.500.000",
+    "ppn_persen": 11,
+    "ppn": "15.125.000",
+    "total": "152.625.000",
+    "total_terbilang": "Seratus lima puluh dua juta enam ratus dua puluh lima ribu rupiah",
+    "items": [
+      {
+        "uraian": "Pelatihan Generative AI 3 hari",
+        "jumlah": 25,
+        "satuan": "peserta",
+        "harga_satuan": "4.500.000",
+        "no": 1,
+        "jumlah_harga": "112.500.000"
+      },
+      {
+        "uraian": "Pendampingan use case dan prototipe",
+        "jumlah": 1,
+        "satuan": "paket",
+        "harga_satuan": "25.000.000",
+        "no": 2,
+        "jumlah_harga": "25.000.000"
+      }
+    ],
+    "nomor": "PNW/MKT/2026/10/0058",
+    "tanggal": "5 Oktober 2026",
+    "lampiran": "-",
+    "ketentuan": [
+      "Penawaran berlaku 30 hari, sampai 4 November 2026.",
+      "Syarat pembayaran: 50% setelah PO terbit, 50% setelah berita acara serah terima.",
+      "Harga sudah termasuk PPN 11%."
+    ]
+  }
+}
