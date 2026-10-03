@@ -109,7 +109,8 @@ def jalankan_skenario(skenario, katalog, mode="skill", paralel=8, ulang=1, label
                 "dimuat": sesi.dimuat if sesi else [], "dibaca": sesi.dibaca if sesi else [],
                 "jawaban": (sesi.jawaban or "")[:400] if sesi else "", "galat": galat,
                 "dokumen": [d["berkas"] for d in sesi.dokumen] if sesi else [],
-                "didorong": bool(getattr(sesi, "wajib", False)) if sesi else False}
+                "didorong": bool(getattr(sesi, "wajib", False)) if sesi else False,
+                "ditolak": getattr(sesi, "ditolak", 0) if sesi else 0}
 
     with cf.ThreadPoolExecutor(paralel) as ex:
         return list(ex.map(satu, tugas))
@@ -155,6 +156,7 @@ def ringkas_skenario(baris):
     if semua_dok:
         out["dokumen_dibuat"] = f"{sum(bool(b.get('dok_ok')) for b in semua_dok)}/{len(semua_dok)}"
     out["tool_wajib_aktif"] = sum(bool(b.get("didorong")) for b in baris)
+    out["teks_ditolak"] = sum(b.get("ditolak", 0) for b in baris)
     dok = [b for b in baris if b["jenis"] == "dokumen" and b.get("dok_ok")]
     if dok:
         out["arg_benar"] = f"{sum(bool(b['arg_ok']) for b in dok)}/{len(dok)}"

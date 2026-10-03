@@ -430,18 +430,27 @@ def wajib_tool(sesi, permintaan):
             and any(t["function"]["name"].startswith("isi_") for t in sesi.tools()))
 
 
-def jalankan_agent(permintaan, katalog, mode="skill", riwayat=None, penjaga=True, **kw):
-    """Satu permintaan pengguna -> loop LLM + tool sampai model menjawab tanpa tool (atau anggaran giliran habis)."""
+TOLAK_TEKS = ("Ditolak sistem: pada langkah ini Anda WAJIB memanggil tool — tool dokumen bila data wajib sudah lengkap "
+              "(draf masih bisa direvisi), atau tanya_pengguna bila ada data yang belum disebut pengguna. Jangan menulis draf sebagai teks.")
+
+
+def jalankan_agent(permintaan, katalog, mode="skill", riwayat=None, penjaga="ulang", **kw):
+    """Satu permintaan pengguna -> loop LLM + tool sampai model menjawab tanpa tool (atau anggaran giliran habis).
+
+    penjaga: None (tanpa penjaga) · "required" (tool_choice=required, guided decoding vLLM: pasti, tetapi lambat di CPU
+             Colab) · "ulang" (validasi-dan-ulang: jawaban teks saat tool wajib ditolak dan model diminta ulang, maks 2x).
+    """
     sesi = Sesi(katalog, mode, **kw)
     pesan = [{"role": "system", "content": prompt_sistem(katalog, mode, sesi.hari_ini)}] + list(riwayat or []) \
         + [{"role": "user", "content": permintaan}]
+    ditolak = 0
     for g in range(sesi.maks_giliran):
         sesi.giliran = g + 1
-        wajib = penjaga and wajib_tool(sesi, permintaan)
+        wajib = bool(penjaga) and wajib_tool(sesi, permintaan)
         if wajib:
             sesi.wajib = True
         msg = chat(pesan, tools=sesi.tools() + ([TOOL_TANYA] if wajib else []),
-                   tool_choice="required" if wajib else "auto", suhu=sesi.suhu, meter=sesi.meter)
+                   tool_choice="required" if (wajib and penjaga == "required") else "auto", suhu=sesi.suhu, meter=sesi.meter)
         panggilan = msg.get("tool_calls") or []
         sesi._catat("llm", giliran=g + 1, tool=[c["function"]["name"] for c in panggilan], wajib=wajib,
                     token_masuk=sesi.meter.masuk, token_keluar=sesi.meter.keluar)
@@ -456,8 +465,15 @@ def jalankan_agent(permintaan, katalog, mode="skill", riwayat=None, penjaga=True
             pesan.append({"role": "assistant", "content": sesi.jawaban})
             break
         if not panggilan:
-            sesi.jawaban = (msg.get("content") or "").strip()
-            pesan.append({"role": "assistant", "content": sesi.jawaban})
+            teks = (msg.get("content") or "").strip()
+            pesan.append({"role": "assistant", "content": teks})
+            if wajib and penjaga == "ulang" and ditolak < 2:
+                ditolak += 1
+                sesi.ditolak = ditolak
+                sesi._catat("penjaga", pesan="jawaban teks ditolak; model diminta memanggil tool")
+                pesan.append({"role": "user", "content": TOLAK_TEKS})
+                continue
+            sesi.jawaban = teks
             break
         pesan.append({"role": "assistant", "content": msg.get("content") or "", "tool_calls": panggilan})
         for c in panggilan:
@@ -478,6 +494,9 @@ def jalankan_agent(permintaan, katalog, mode="skill", riwayat=None, penjaga=True
 def cetak_trace(sesi):
     """Tampilkan jejak satu sesi: kapan skill dimuat, rujukan dibaca, tool dipanggil, dan hasilnya."""
     for t in sesi.trace:
+        if t["jenis"] == "penjaga":
+            print(f"{t['t']:6.1f}s  PENJAGA {t['pesan']}")
+            continue
         if t["jenis"] == "llm":
             arah = ", ".join(t["tool"]) if t["tool"] else "jawaban akhir"
             wajib = "  [tool WAJIB]" if t.get("wajib") else ""
