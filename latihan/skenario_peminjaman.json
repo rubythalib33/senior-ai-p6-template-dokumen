@@ -1,0 +1,44 @@
+{
+ "versi": "1.0",
+ "hari_ini": "2026-10-05",
+ "skenario": [
+  {
+   "id": "AST-1",
+   "skill": "peminjaman-aset-ti",
+   "jenis": "tanya",
+   "prompt": "Berapa lama saya boleh meminjam proyektor kantor?",
+   "cek_jawaban": [
+    "\b(3|tiga) hari"
+   ]
+  },
+  {
+   "id": "AST-2",
+   "skill": "peminjaman-aset-ti",
+   "jenis": "tanya",
+   "prompt": "Laptop cadangan yang saya pinjam terlambat dikembalikan seminggu. Apa konsekuensinya?",
+   "cek_jawaban": [
+    "diblokir|blokir",
+    "30 hari"
+   ]
+  },
+  {
+   "id": "AST-3",
+   "skill": "peminjaman-aset-ti",
+   "jenis": "tanya",
+   "prompt": "Saya mau pinjam kamera konferensi untuk dipakai besok pagi. Bisa?",
+   "cek_jawaban": [
+    "(2|dua) hari kerja",
+    "supervisor service desk"
+   ]
+  },
+  {
+   "id": "AST-4",
+   "skill": "peminjaman-aset-ti",
+   "jenis": "tanya",
+   "prompt": "Saya akan dinas ke Medan selama 10 hari. Boleh pinjam laptop cadangan kantor selama itu?",
+   "cek_jawaban": [
+    "14 hari"
+   ]
+  }
+ ]
+}

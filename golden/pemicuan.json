@@ -1,0 +1,256 @@
+{
+ "versi": "1.0",
+ "catatan": "harap = nama skill yang seharusnya dimuat pertama kali; null = tidak boleh memuat skill apa pun",
+ "soal": [
+  {
+   "id": "PIC-01",
+   "harap": "pengadaan-barang-jasa",
+   "prompt": "Tolong buatkan memo pengadaan 5 lisensi Adobe Acrobat untuk tim legal, sekitar 3,2 juta per lisensi."
+  },
+  {
+   "id": "PIC-02",
+   "harap": "pengadaan-barang-jasa",
+   "prompt": "Kami perlu beli 2 server GPU buat tim data, kira-kira 450 juta per unit. Prosesnya gimana?"
+  },
+  {
+   "id": "PIC-03",
+   "harap": "pengadaan-barang-jasa",
+   "prompt": "Vendor kirim penawaran jasa pembersihan kantor 18 juta per bulan, saya mau ajukan kontraknya untuk 12 bulan."
+  },
+  {
+   "id": "PIC-04",
+   "harap": "pengadaan-barang-jasa",
+   "prompt": "Pembelian senilai 150 juta itu butuh berapa penawaran pembanding?"
+  },
+  {
+   "id": "PIC-05",
+   "harap": "pengadaan-barang-jasa",
+   "prompt": "Boleh nggak saya pecah pembelian laptop jadi tiga memo biar masing-masing di bawah 50 juta?"
+  },
+  {
+   "id": "PIC-06",
+   "harap": "pengadaan-barang-jasa",
+   "prompt": "Siapa saja yang harus menyetujui pengadaan senilai 1,2 miliar?"
+  },
+  {
+   "id": "PIC-07",
+   "harap": "pengadaan-barang-jasa",
+   "prompt": "Saya mau sewa konsultan keamanan siber untuk audit 3 bulan, anggarannya 240 juta."
+  },
+  {
+   "id": "PIC-08",
+   "harap": "surat-penawaran",
+   "prompt": "Buatkan surat penawaran pelatihan data analytics untuk Bank Sinar Jaya, 20 peserta, 3,5 juta per orang."
+  },
+  {
+   "id": "PIC-09",
+   "harap": "surat-penawaran",
+   "prompt": "Klien PT Maju Logistik minta quotation implementasi chatbot dari kita, tolong siapkan suratnya."
+  },
+  {
+   "id": "PIC-10",
+   "harap": "surat-penawaran",
+   "prompt": "Kita mau menawarkan jasa konsultasi AI ke Pemda Kota Bogor, buatkan surat resminya."
+  },
+  {
+   "id": "PIC-11",
+   "harap": "surat-penawaran",
+   "prompt": "Penawaran harga kita ke klien biasanya berlaku berapa lama?"
+  },
+  {
+   "id": "PIC-12",
+   "harap": "surat-penawaran",
+   "prompt": "Tolong susun quotation paket workshop GenAI 2 hari untuk Universitas Nusantara."
+  },
+  {
+   "id": "PIC-13",
+   "harap": "surat-penawaran",
+   "prompt": "Siapa yang harus tanda tangan surat penawaran kita ke klien kalau nilainya 750 juta?"
+  },
+  {
+   "id": "PIC-14",
+   "harap": "perjalanan-dinas",
+   "prompt": "Saya ditugaskan ke Medan tanggal 20 sampai 22 Oktober untuk visit klien, tolong buatkan SPPD."
+  },
+  {
+   "id": "PIC-15",
+   "harap": "perjalanan-dinas",
+   "prompt": "Berapa uang harian manajer kalau dinas ke Yogyakarta?"
+  },
+  {
+   "id": "PIC-16",
+   "harap": "perjalanan-dinas",
+   "prompt": "Bikinkan surat tugas perjalanan untuk Rudi, staf TI, ke Bandung naik kereta selama 2 hari."
+  },
+  {
+   "id": "PIC-17",
+   "harap": "perjalanan-dinas",
+   "prompt": "Batas penginapan per malam untuk kepala divisi di Surabaya berapa?"
+  },
+  {
+   "id": "PIC-18",
+   "harap": "perjalanan-dinas",
+   "prompt": "Satu engineer kami harus ke Balikpapan seminggu untuk instalasi server, hitungkan biaya dinasnya."
+  },
+  {
+   "id": "PIC-19",
+   "harap": "perjalanan-dinas",
+   "prompt": "Perjalanan dinas harus diajukan paling lambat berapa hari sebelum berangkat?"
+  },
+  {
+   "id": "PIC-20",
+   "harap": "nota-dinas",
+   "prompt": "Buatkan nota dinas ke Kepala Divisi Keuangan untuk minta percepatan pencairan anggaran pelatihan."
+  },
+  {
+   "id": "PIC-21",
+   "harap": "nota-dinas",
+   "prompt": "Tolong susun surat internal ke Direktur Operasional berisi usulan kebijakan kerja hybrid."
+  },
+  {
+   "id": "PIC-22",
+   "harap": "nota-dinas",
+   "prompt": "Saya perlu memberi tahu semua kepala divisi bahwa server email akan maintenance Sabtu malam, formatnya resmi internal."
+  },
+  {
+   "id": "PIC-23",
+   "harap": "nota-dinas",
+   "prompt": "Bagaimana format penomoran nota dinas di kantor kita?"
+  },
+  {
+   "id": "PIC-24",
+   "harap": "nota-dinas",
+   "prompt": "Buat surat permohonan akses data dari Divisi Pemasaran ke Divisi TI."
+  },
+  {
+   "id": "PIC-25",
+   "harap": "nota-dinas",
+   "prompt": "Di nota dinas boleh pakai singkatan seperti yg dan utk nggak?"
+  },
+  {
+   "id": "PIC-26",
+   "harap": "notulen-rapat",
+   "prompt": "Ini catatan rapat tadi pagi: hadir Andi, Budi, Sinta; bahas target Q4; disepakati target naik 10%; Budi siapkan laporan Jumat. Tolong jadikan notulen resmi."
+  },
+  {
+   "id": "PIC-27",
+   "harap": "notulen-rapat",
+   "prompt": "Saya punya transkrip rapat evaluasi vendor, tolong rangkum jadi notulen lengkap dengan action item."
+  },
+  {
+   "id": "PIC-28",
+   "harap": "notulen-rapat",
+   "prompt": "Rapat koordinasi kemarin memutuskan tiga hal, tolong buatkan notulennya dari poin-poin yang saya kirim."
+  },
+  {
+   "id": "PIC-29",
+   "harap": "notulen-rapat",
+   "prompt": "Notulen rapat harus diedarkan paling lambat kapan setelah rapat?"
+  },
+  {
+   "id": "PIC-30",
+   "harap": "notulen-rapat",
+   "prompt": "Kalau action item di rapat belum ada PIC-nya, di notulen ditulis bagaimana?"
+  },
+  {
+   "id": "PIC-31",
+   "harap": "notulen-rapat",
+   "prompt": "Tolong ubah catatan meeting ini jadi notulen: hadir Rina dan Dimas, bahas jadwal pilot, Dimas kirim rencana Senin."
+  },
+  {
+   "id": "PIC-32",
+   "harap": "laporan-insiden",
+   "prompt": "Aplikasi absensi down sejak jam 8 pagi, semua karyawan nggak bisa clock-in. Tolong buat laporan insiden."
+  },
+  {
+   "id": "PIC-33",
+   "harap": "laporan-insiden",
+   "prompt": "Email kantor lambat banget dari tadi siang, sebagian user terdampak, sudah normal jam 3. Tolong dilaporkan."
+  },
+  {
+   "id": "PIC-34",
+   "harap": "laporan-insiden",
+   "prompt": "Ada dugaan data pelanggan bocor dari bucket penyimpanan yang terbuka, buatkan laporan insidennya."
+  },
+  {
+   "id": "PIC-35",
+   "harap": "laporan-insiden",
+   "prompt": "Kalau dampaknya rendah tapi urgensinya tinggi itu severity berapa?"
+  },
+  {
+   "id": "PIC-36",
+   "harap": "laporan-insiden",
+   "prompt": "VPN putus untuk tim sales selama 40 menit tadi, sekarang sudah pulih. Tolong didokumentasikan."
+  },
+  {
+   "id": "PIC-37",
+   "harap": "laporan-insiden",
+   "prompt": "Insiden P1 harus dilaporkan dalam berapa lama?"
+  },
+  {
+   "id": "PIC-38",
+   "harap": "cuti-dan-izin",
+   "prompt": "Jatah cuti tahunan saya berapa hari?"
+  },
+  {
+   "id": "PIC-39",
+   "harap": "cuti-dan-izin",
+   "prompt": "Saya mau menikah bulan depan, dapat izin berapa hari?"
+  },
+  {
+   "id": "PIC-40",
+   "harap": "cuti-dan-izin",
+   "prompt": "Cuti melahirkan di kantor ini berapa lama?"
+  },
+  {
+   "id": "PIC-41",
+   "harap": "cuti-dan-izin",
+   "prompt": "Sisa cuti tahun lalu masih bisa dipakai nggak?"
+  },
+  {
+   "id": "PIC-42",
+   "harap": "cuti-dan-izin",
+   "prompt": "Bagaimana cara mengajukan cuti dan berapa hari sebelumnya?"
+  },
+  {
+   "id": "PIC-43",
+   "harap": "cuti-dan-izin",
+   "prompt": "Ayah saya meninggal, saya boleh izin berapa hari?"
+  },
+  {
+   "id": "PIC-44",
+   "harap": null,
+   "prompt": "Tolong jadwalkan rapat dengan tim keuangan hari Kamis jam 10."
+  },
+  {
+   "id": "PIC-45",
+   "harap": null,
+   "prompt": "Berapa kurs dolar hari ini?"
+  },
+  {
+   "id": "PIC-46",
+   "harap": null,
+   "prompt": "Buatkan puisi ulang tahun untuk rekan kerja saya."
+  },
+  {
+   "id": "PIC-47",
+   "harap": null,
+   "prompt": "Tolong kirim email ke vendor katering bahwa pembayaran sudah diproses."
+  },
+  {
+   "id": "PIC-48",
+   "harap": null,
+   "prompt": "Rekan kerja saya sering datang terlambat, apa yang sebaiknya saya lakukan?"
+  },
+  {
+   "id": "PIC-49",
+   "harap": null,
+   "prompt": "Jelaskan apa itu retrieval augmented generation."
+  },
+  {
+   "id": "PIC-50",
+   "harap": null,
+   "prompt": "Saya jatuh di tangga kantor dan kaki saya terkilir, harus lapor ke mana?"
+  }
+ ]
+}

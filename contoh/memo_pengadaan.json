@@ -26,11 +26,9 @@
     "sumber_anggaran": "Anggaran Capex Divisi Data & AI 2026"
   },
   "program": {
-    "subtotal": "247.800.000",
-    "ppn_persen": 11,
-    "ppn": "27.258.000",
-    "total": "275.058.000",
-    "total_terbilang": "Dua ratus tujuh puluh lima juta lima puluh delapan ribu rupiah",
+    "nomor": "MPP/DAI/2026/10/0001",
+    "tanggal": "5 Oktober 2026",
+    "kepada": "Kepala Unit Pengadaan",
     "items": [
       {
         "uraian": "Laptop pengembang",
@@ -51,21 +49,22 @@
         "jumlah_harga": "25.800.000"
       }
     ],
-    "nomor": "MPP/DAI/2026/10/0042",
-    "tanggal": "5 Oktober 2026",
-    "kepada": "Kepala Unit Pengadaan",
-    "kebutuhan_tanggal": "16 November 2026",
+    "subtotal": "247.800.000",
+    "ppn_persen": 11,
+    "ppn": "27.258.000",
+    "total": "275.058.000",
+    "total_terbilang": "Dua ratus tujuh puluh lima juta lima puluh delapan ribu rupiah",
     "metode_pengadaan": "Pemilihan langsung",
     "min_penawaran": 3,
-    "dasar_metode": "SOP Pengadaan SOP-PGD-01 Pasal 5 ayat (2): nilai di atas Rp200 juta s.d. Rp1 miliar",
+    "dasar_metode": "SOP-PGD-01 Pasal 5: nilai di atas Rp200.000.000 s.d. Rp1.000.000.000",
     "peringatan": [
-      "Dalam 90 hari terakhir Divisi Data & AI sudah mengajukan pembelian laptop senilai Rp96.000.000. Pastikan permintaan ini bukan pemecahan paket (SOP-PGD-01 Pasal 9)."
+      "Ada pengadaan sejenis oleh Divisi Data & AI dalam 90 hari terakhir: Laptop pengembang Rp96.000.000 (20 Agustus 2026). Nilai gabungan Rp371.058.000 dipakai untuk metode dan persetujuan (metode tetap Pemilihan langsung); pastikan ini bukan pemecahan paket (SOP-PGD-01 Pasal 9)."
     ],
     "lampiran": [
-      "Spesifikasi teknis / kerangka acuan kerja",
-      "Minimal 3 penawaran harga tertulis dari vendor berbeda",
-      "Harga perkiraan sendiri (HPS)",
-      "Konfirmasi ketersediaan anggaran dari Divisi Keuangan"
+      "Spesifikasi teknis atau kerangka acuan kerja",
+      "Konfirmasi ketersediaan anggaran dari Divisi Keuangan",
+      "Minimal 3 penawaran harga tertulis dari penyedia berbeda",
+      "Harga perkiraan sendiri (HPS)"
     ],
     "persetujuan": [
       {
@@ -80,6 +79,7 @@
         "tingkat": "3",
         "jabatan": "Direktur Operasional"
       }
-    ]
+    ],
+    "kebutuhan_tanggal": "16 November 2026"
   }
 }

@@ -1,0 +1,60 @@
+{
+ "ppn_persen": 11,
+ "jendela_pemecahan_hari": 90,
+ "kepada": "Kepala Unit Pengadaan",
+ "metode": [
+  {
+   "batas_atas": 50000000,
+   "metode": "Pembelian langsung",
+   "min_penawaran": 1,
+   "pasal": "SOP-PGD-01 Pasal 5: nilai sampai dengan Rp50.000.000",
+   "waktu_proses_hari": 7
+  },
+  {
+   "batas_atas": 200000000,
+   "metode": "Pengadaan langsung",
+   "min_penawaran": 2,
+   "pasal": "SOP-PGD-01 Pasal 5: nilai di atas Rp50.000.000 s.d. Rp200.000.000",
+   "waktu_proses_hari": 14
+  },
+  {
+   "batas_atas": 1000000000,
+   "metode": "Pemilihan langsung",
+   "min_penawaran": 3,
+   "pasal": "SOP-PGD-01 Pasal 5: nilai di atas Rp200.000.000 s.d. Rp1.000.000.000",
+   "waktu_proses_hari": 21
+  },
+  {
+   "batas_atas": null,
+   "metode": "Tender",
+   "min_penawaran": 3,
+   "pasal": "SOP-PGD-01 Pasal 5: nilai di atas Rp1.000.000.000",
+   "waktu_proses_hari": 45
+  }
+ ],
+ "konsultansi": {
+  "batas_bawah": 50000000,
+  "metode": "Seleksi",
+  "min_penawaran": 3,
+  "pasal": "SOP-PGD-01 Pasal 6: jasa konsultansi di atas Rp50.000.000",
+  "waktu_proses_hari": 30
+ },
+ "persetujuan": [
+  {
+   "di_atas": 0,
+   "jabatan": "Kepala Divisi pemohon"
+  },
+  {
+   "di_atas": 50000000,
+   "jabatan": "Kepala Divisi Keuangan"
+  },
+  {
+   "di_atas": 200000000,
+   "jabatan": "Direktur Operasional"
+  },
+  {
+   "di_atas": 1000000000,
+   "jabatan": "Direktur Utama"
+  }
+ ]
+}

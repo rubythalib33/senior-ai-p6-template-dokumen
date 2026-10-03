@@ -30,11 +30,9 @@
     "jabatan_penandatangan": "Kepala Divisi Pemasaran"
   },
   "program": {
-    "subtotal": "137.500.000",
-    "ppn_persen": 11,
-    "ppn": "15.125.000",
-    "total": "152.625.000",
-    "total_terbilang": "Seratus lima puluh dua juta enam ratus dua puluh lima ribu rupiah",
+    "nomor": "PNW/MKT/2026/10/0001",
+    "tanggal": "5 Oktober 2026",
+    "lampiran": "-",
     "items": [
       {
         "uraian": "Pelatihan Generative AI 3 hari",
@@ -53,13 +51,18 @@
         "jumlah_harga": "25.000.000"
       }
     ],
-    "nomor": "PNW/MKT/2026/10/0058",
-    "tanggal": "5 Oktober 2026",
-    "lampiran": "-",
+    "subtotal": "137.500.000",
+    "ppn_persen": 11,
+    "ppn": "15.125.000",
+    "total": "152.625.000",
+    "total_terbilang": "Seratus lima puluh dua juta enam ratus dua puluh lima ribu rupiah",
+    "jabatan_penandatangan": "Kepala Divisi Pemasaran",
+    "nama_penandatangan": "Andini Putri",
     "ketentuan": [
       "Penawaran berlaku 30 hari, sampai 4 November 2026.",
       "Syarat pembayaran: 50% setelah PO terbit, 50% setelah berita acara serah terima.",
       "Harga sudah termasuk PPN 11%."
-    ]
+    ],
+    "peringatan": []
   }
 }

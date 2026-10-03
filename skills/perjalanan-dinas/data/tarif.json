@@ -1,0 +1,150 @@
+{
+ "kota_asal": "Jakarta",
+ "kategori_kota": {
+  "I": [
+   "Jakarta",
+   "Surabaya",
+   "Denpasar",
+   "Batam",
+   "Balikpapan",
+   "Makassar",
+   "Medan"
+  ],
+  "II": [
+   "Bandung",
+   "Semarang",
+   "Yogyakarta",
+   "Malang",
+   "Solo",
+   "Cirebon",
+   "Palembang",
+   "Pekanbaru",
+   "Padang",
+   "Banjarmasin",
+   "Pontianak",
+   "Samarinda",
+   "Manado",
+   "Mataram",
+   "Kupang",
+   "Jayapura",
+   "Ambon",
+   "Banda Aceh",
+   "Jambi",
+   "Bandar Lampung",
+   "Serang",
+   "Palu",
+   "Kendari",
+   "Bengkulu",
+   "Pangkalpinang",
+   "Tanjung Pinang",
+   "Gorontalo",
+   "Ternate"
+  ]
+ },
+ "uang_harian": {
+  "Staf": [
+   400000,
+   350000,
+   300000
+  ],
+  "Supervisor": [
+   400000,
+   350000,
+   300000
+  ],
+  "Manajer": [
+   530000,
+   460000,
+   400000
+  ],
+  "Kepala Divisi": [
+   650000,
+   560000,
+   480000
+  ],
+  "Direksi": [
+   800000,
+   700000,
+   600000
+  ]
+ },
+ "penginapan_maks": {
+  "Staf": [
+   750000,
+   600000,
+   500000
+  ],
+  "Supervisor": [
+   750000,
+   600000,
+   500000
+  ],
+  "Manajer": [
+   1250000,
+   1000000,
+   850000
+  ],
+  "Kepala Divisi": [
+   1600000,
+   1300000,
+   1100000
+  ],
+  "Direksi": [
+   2500000,
+   2000000,
+   1600000
+  ]
+ },
+ "transport_lokal": [
+  300000,
+  250000,
+  200000
+ ],
+ "bbm_tol_per_hari": 500000,
+ "tiket_pesawat_pp": {
+  "Surabaya": 2200000,
+  "Denpasar": 3000000,
+  "Batam": 2400000,
+  "Balikpapan": 3600000,
+  "Makassar": 4200000,
+  "Medan": 3800000,
+  "Yogyakarta": 1900000,
+  "Semarang": 1800000,
+  "Solo": 1900000,
+  "Malang": 2300000,
+  "Palembang": 1900000,
+  "Pekanbaru": 2600000,
+  "Padang": 2700000,
+  "Banjarmasin": 2900000,
+  "Pontianak": 2500000,
+  "Samarinda": 3700000,
+  "Manado": 5200000,
+  "Mataram": 3200000,
+  "Kupang": 4900000,
+  "Jayapura": 8500000,
+  "Ambon": 5800000,
+  "Banda Aceh": 4400000
+ },
+ "tiket_pesawat_default": {
+  "II": 3500000,
+  "III": 4500000
+ },
+ "tanpa_penerbangan": [
+  "Bandung",
+  "Cirebon",
+  "Serang"
+ ],
+ "tiket_kereta_pp": {
+  "Bandung": 400000,
+  "Cirebon": 450000,
+  "Semarang": 900000,
+  "Yogyakarta": 1000000,
+  "Solo": 1000000,
+  "Surabaya": 1200000,
+  "Malang": 1300000
+ },
+ "bus_persen_kereta": 60,
+ "maks_hari": 14,
+ "min_hari_pengajuan": 3,
+ "uang_muka_persen": 80
+}

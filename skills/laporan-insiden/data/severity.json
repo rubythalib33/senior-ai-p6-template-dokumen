@@ -1,0 +1,60 @@
+{
+ "matriks": {
+  "Tinggi": {
+   "Tinggi": "P1",
+   "Sedang": "P2",
+   "Rendah": "P3"
+  },
+  "Sedang": {
+   "Tinggi": "P2",
+   "Sedang": "P3",
+   "Rendah": "P4"
+  },
+  "Rendah": {
+   "Tinggi": "P3",
+   "Sedang": "P4",
+   "Rendah": "P4"
+  }
+ },
+ "_catatan_matriks": "matriks[urgensi][dampak]",
+ "severity": {
+  "P1": {
+   "nama": "Kritis",
+   "target": "2 jam",
+   "penanggung_jawab": "Direktur Operasional",
+   "warna": "B91C1C",
+   "lapor_menit": 30
+  },
+  "P2": {
+   "nama": "Tinggi",
+   "target": "4 jam",
+   "penanggung_jawab": "Kepala Divisi Teknologi Informasi",
+   "warna": "D97706",
+   "lapor_menit": 120
+  },
+  "P3": {
+   "nama": "Sedang",
+   "target": "1 hari kerja",
+   "penanggung_jawab": "Manajer Infrastruktur TI",
+   "warna": "CA8A04",
+   "lapor_menit": null
+  },
+  "P4": {
+   "nama": "Rendah",
+   "target": "3 hari kerja",
+   "penanggung_jawab": "Supervisor Service Desk",
+   "warna": "2563EB",
+   "lapor_menit": null
+  }
+ },
+ "kata_kebocoran": [
+  "bocor",
+  "kebocoran",
+  "akses tidak sah",
+  "data pelanggan terbuka",
+  "ransomware",
+  "malware",
+  "diretas",
+  "peretasan"
+ ]
+}

@@ -44,7 +44,7 @@
     "pelapor": "Bayu Saputra"
   },
   "program": {
-    "nomor": "INS/TI/2026/10/0004",
+    "nomor": "INS/TI/2026/10/0001",
     "tanggal": "9 Oktober 2026",
     "severity": "P2",
     "severity_label": "P2 · Tinggi — target pemulihan 4 jam",
@@ -75,18 +75,20 @@
     ],
     "tindak_lanjut": [
       {
+        "no": 1,
         "tugas": "Tambahkan alarm clock SM dan alasan throttle GPU ke dasbor",
         "pic": "Dimas Prasetyo",
-        "tenggat": "16 Oktober 2026",
-        "no": 1
+        "tenggat": "16 Oktober 2026"
       },
       {
+        "no": 2,
         "tugas": "Tulis runbook pindah host GPU",
         "pic": "Rina Kartika",
-        "tenggat": "20 Oktober 2026",
-        "no": 2
+        "tenggat": "20 Oktober 2026"
       }
     ],
-    "peringatan": []
+    "peringatan": [
+      "Insiden P2 wajib postmortem tertulis paling lambat 5 hari kerja setelah pulih (Pasal 6 ayat 3)."
+    ]
   }
 }
