@@ -414,17 +414,20 @@ class Sesi:
 
 MINTA_DOKUMEN = re.compile(r"\b(buat|buatkan|bikin|bikinkan|susun|susunkan|siapkan|ajukan|mengajukan|jadikan|"
                            r"dokumentasikan|laporkan)\b", re.I)
-MINTA_DATA = re.compile(r"\?|\b(mohon|silakan|tolong|perlu|memerlukan|membutuhkan)\b.{0,80}\b(informasi|sebutkan|berikan|"
-                        r"lengkapi|data|detail|konfirmasi)", re.I | re.S)
-DORONG = ("Catatan sistem: Anda belum memanggil tool dokumen. Bila semua data wajib sudah disebut pengguna, panggil tool "
-          "dokumen sekarang (draf masih bisa direvisi). Bila belum lengkap, tanyakan data yang kurang kepada pengguna.")
+TOOL_TANYA = {"type": "function", "function": {
+    "name": "tanya_pengguna",
+    "description": "Tanyakan data wajib yang BELUM disebut pengguna. Jangan dipakai untuk meminta konfirmasi bila data sudah lengkap.",
+    "parameters": {"type": "object", "properties": {
+        "pertanyaan": {"type": "string", "description": "Pertanyaan untuk pengguna, satu pesan untuk semua data yang kurang."},
+        "field_kurang": {"type": "array", "items": {"type": "string"}, "description": "Nama data yang belum ada."}},
+        "required": ["pertanyaan", "field_kurang"]}}}
 
 
-def perlu_didorong(sesi, permintaan, teks):
-    """Penjaga runtime: model kecil kadang menyajikan 'draf' sebagai teks alih-alih memanggil tool dokumen.
-    Dorong SEKALI bila pengguna jelas meminta dokumen, tool dokumen sudah aktif, belum ada dokumen, dan model tidak bertanya."""
-    return (not sesi.dokumen and not getattr(sesi, "didorong", False) and MINTA_DOKUMEN.search(permintaan)
-            and any(t["function"]["name"].startswith("isi_") for t in sesi.tools()) and not MINTA_DATA.search(teks))
+def wajib_tool(sesi, permintaan):
+    """Penjaga struktural (pelajaran P5): bila pengguna meminta dokumen dan tool dokumen sudah aktif, model WAJIB memanggil
+    tool — tool dokumen, atau tanya_pengguna bila data kurang. Menyajikan 'draf' sebagai teks tidak lagi mungkin."""
+    return (not sesi.dokumen and bool(MINTA_DOKUMEN.search(permintaan))
+            and any(t["function"]["name"].startswith("isi_") for t in sesi.tools()))
 
 
 def jalankan_agent(permintaan, katalog, mode="skill", riwayat=None, penjaga=True, **kw):
@@ -434,19 +437,27 @@ def jalankan_agent(permintaan, katalog, mode="skill", riwayat=None, penjaga=True
         + [{"role": "user", "content": permintaan}]
     for g in range(sesi.maks_giliran):
         sesi.giliran = g + 1
-        msg = chat(pesan, tools=sesi.tools(), suhu=sesi.suhu, meter=sesi.meter)
+        wajib = penjaga and wajib_tool(sesi, permintaan)
+        if wajib:
+            sesi.wajib = True
+        msg = chat(pesan, tools=sesi.tools() + ([TOOL_TANYA] if wajib else []),
+                   tool_choice="required" if wajib else "auto", suhu=sesi.suhu, meter=sesi.meter)
         panggilan = msg.get("tool_calls") or []
-        sesi._catat("llm", giliran=g + 1, tool=[c["function"]["name"] for c in panggilan],
+        sesi._catat("llm", giliran=g + 1, tool=[c["function"]["name"] for c in panggilan], wajib=wajib,
                     token_masuk=sesi.meter.masuk, token_keluar=sesi.meter.keluar)
+        tanya = [c for c in panggilan if c["function"]["name"] == "tanya_pengguna"]
+        if tanya and not sesi.dokumen:
+            try:
+                a = json.loads(tanya[0]["function"].get("arguments") or "{}")
+            except json.JSONDecodeError:
+                a = {}
+            sesi.jawaban = (a.get("pertanyaan") or "Mohon lengkapi data yang diperlukan.").strip()
+            sesi._catat("tool", nama="tanya_pengguna", argumen=a, hasil={"ringkasan": "giliran ditutup dengan pertanyaan"})
+            pesan.append({"role": "assistant", "content": sesi.jawaban})
+            break
         if not panggilan:
-            teks = (msg.get("content") or "").strip()
-            pesan.append({"role": "assistant", "content": teks})
-            if penjaga and perlu_didorong(sesi, permintaan, teks):
-                sesi.didorong = True
-                sesi._catat("penjaga", pesan=DORONG)
-                pesan.append({"role": "user", "content": DORONG})
-                continue
-            sesi.jawaban = teks
+            sesi.jawaban = (msg.get("content") or "").strip()
+            pesan.append({"role": "assistant", "content": sesi.jawaban})
             break
         pesan.append({"role": "assistant", "content": msg.get("content") or "", "tool_calls": panggilan})
         for c in panggilan:
@@ -467,12 +478,10 @@ def jalankan_agent(permintaan, katalog, mode="skill", riwayat=None, penjaga=True
 def cetak_trace(sesi):
     """Tampilkan jejak satu sesi: kapan skill dimuat, rujukan dibaca, tool dipanggil, dan hasilnya."""
     for t in sesi.trace:
-        if t["jenis"] == "penjaga":
-            print(f"{t['t']:6.1f}s  PENJAGA model menjawab tanpa memanggil tool dokumen -> didorong sekali")
-            continue
         if t["jenis"] == "llm":
             arah = ", ".join(t["tool"]) if t["tool"] else "jawaban akhir"
-            print(f"{t['t']:6.1f}s  LLM   giliran {t['giliran']} -> {arah}   (token masuk kumulatif {t['token_masuk']:,})")
+            wajib = "  [tool WAJIB]" if t.get("wajib") else ""
+            print(f"{t['t']:6.1f}s  LLM   giliran {t['giliran']} -> {arah}{wajib}   (token masuk kumulatif {t['token_masuk']:,})")
         else:
             a = {k: (v if len(str(v)) < 60 else str(v)[:57] + "...") for k, v in t["argumen"].items()}
             h = t["hasil"]
