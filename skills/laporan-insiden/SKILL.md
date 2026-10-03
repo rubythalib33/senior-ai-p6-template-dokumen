@@ -14,8 +14,9 @@ allowed-tools: isi_laporan_insiden
    - Tinggi: seluruh perusahaan atau fungsi inti mati untuk semua, atau dugaan kebocoran data;
    - Sedang: satu divisi/sekelompok pengguna, atau layanan melambat tapi masih bisa dipakai;
    - Rendah: sedikit pengguna, ada cara kerja alternatif.
-3. Nilai **urgensi** (seberapa cepat): Tinggi bila masih berlangsung dan merugikan atau memburuk; Sedang bila perlu
-   selesai hari ini; Rendah bila sudah pulih dan tidak berulang, atau bisa dijadwalkan.
+3. Nilai **urgensi** (seberapa cepat): Tinggi bila masih berlangsung dan merugikan atau memburuk; Sedang bila masih
+   berlangsung/berpotensi berulang dan perlu selesai hari ini; Rendah bila sudah pulih dan tidak berulang, atau bisa
+   dijadwalkan.
 4. Panggil `isi_laporan_insiden` dengan waktu "YYYY-MM-DD HH:MM". Severity, status, durasi, penanggung jawab, nomor
    diisi sistem dari matriks — JANGAN menentukan P1–P4 sendiri.
 5. Sampaikan nomor laporan, severity, target pemulihan, penanggung jawab, dan semua peringatan (mis. kewajiban postmortem).

@@ -7,7 +7,7 @@ allowed-tools: isi_memo_pengadaan
 # Pengadaan barang/jasa (SOP-PGD-01) — varian instruksi naratif
 
 Kumpulkan data pemohon, barang/jasa (uraian, spesifikasi, jumlah, satuan, harga satuan), tanggal kebutuhan, sumber
-anggaran, dan alasan; tanyakan yang belum ada. Lalu panggil `isi_memo_pengadaan`. Pada varian ini Anda sendiri yang
+anggaran, dan alasan; tanyakan yang belum ada. Bila semuanya sudah ada, LANGSUNG panggil tool — jangan meminta konfirmasi dulu; memo masih draf dan bisa direvisi. Spesifikasi yang singkat (mis. "printer laser A3") dipakai apa adanya. Lalu panggil `isi_memo_pengadaan`. Pada varian ini Anda sendiri yang
 mengisi metode, jumlah penawaran, persetujuan, PPN, dan nomor berdasarkan aturan berikut.
 
 Nilai pengadaan adalah jumlah seluruh rincian ditambah PPN sebelas persen. Untuk pembelian kecil yang nilainya tidak

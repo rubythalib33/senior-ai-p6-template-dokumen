@@ -68,7 +68,10 @@ def nilai_skenario(sk, sesi, mode):
             r["alasan"].append("jawaban tidak memuat: " + ", ".join(p for p in sk["cek_jawaban"] if not re.search(p, jawab, re.I)))
         lulus = pola_ok and not sesi.dokumen and r["picu_ok"] is not False
     elif j == "tanya_balik":
-        bertanya = "?" in jawab and any(re.search(p, jawab, re.I) for p in sk["cek_jawaban"])
+        # bertanya = ada tanda tanya ATAU kalimat meminta data ("mohon informasikan", "saya memerlukan ...")
+        minta = "?" in jawab or re.search(r"\b(mohon|silakan|tolong|perlu|memerlukan|membutuhkan)\b.{0,80}"
+                                          r"\b(informasi|sebutkan|berikan|lengkapi|data|detail)", jawab, re.I | re.S)
+        bertanya = bool(minta) and any(re.search(p, jawab, re.I) for p in sk["cek_jawaban"])
         if sesi.dokumen:
             r["alasan"].append("membuat dokumen dengan data karangan")
         elif not bertanya:

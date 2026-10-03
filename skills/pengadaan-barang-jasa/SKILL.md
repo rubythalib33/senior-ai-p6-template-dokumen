@@ -10,7 +10,8 @@ allowed-tools: isi_memo_pengadaan
 1. Pastikan Anda punya: nama, jabatan, dan unit pemohon; daftar barang/jasa (uraian, spesifikasi minimum, jumlah,
    satuan, harga satuan perkiraan); tanggal paling lambat dibutuhkan; sumber anggaran; alasan kebutuhan.
 2. Bila ada yang belum disebut pengguna, TANYAKAN semuanya dalam satu pesan. Jangan mengarang harga, jumlah,
-   nama, atau tanggal.
+   nama, atau tanggal. Bila semuanya sudah ada, LANGSUNG panggil tool — jangan meminta konfirmasi dulu; memo masih
+   draf dan bisa direvisi. Spesifikasi yang singkat (mis. "printer laser A3") dipakai apa adanya.
 3. Panggil `isi_memo_pengadaan`:
    - harga dalam Rupiah bilangan bulat: "18,5 juta" → 18500000, "2,15 jt" → 2150000;
    - tanggal YYYY-MM-DD; "16 November 2026" → 2026-11-16;

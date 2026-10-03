@@ -443,6 +443,41 @@ def jalankan_agent(permintaan, katalog, mode="skill", riwayat=None, **kw):
     return sesi
 
 
+def cetak_trace(sesi):
+    """Tampilkan jejak satu sesi: kapan skill dimuat, rujukan dibaca, tool dipanggil, dan hasilnya."""
+    for t in sesi.trace:
+        if t["jenis"] == "llm":
+            arah = ", ".join(t["tool"]) if t["tool"] else "jawaban akhir"
+            print(f"{t['t']:6.1f}s  LLM   giliran {t['giliran']} -> {arah}   (token masuk kumulatif {t['token_masuk']:,})")
+        else:
+            a = {k: (v if len(str(v)) < 60 else str(v)[:57] + "...") for k, v in t["argumen"].items()}
+            h = t["hasil"]
+            ringkas = h.get("ringkasan") or h.get("galat") or h.get("berkas") or h.get("skill") or ""
+            print(f"{t['t']:6.1f}s  TOOL  {t['nama']}({', '.join(f'{k}={v}' for k, v in a.items())})")
+            print(f"{'':14}-> {str(ringkas)[:300]}")
+            for p in h.get("peringatan", []):
+                print(f"{'':14}   ! {p[:200]}")
+    print(f"\nJawaban: {sesi.jawaban}")
+    print(f"Skill dimuat: {sesi.dimuat} · rujukan dibaca: {sesi.dibaca} · dokumen: {[d['berkas'] for d in sesi.dokumen]}")
+    print(f"LLM {sesi.meter.llm}x · token masuk {sesi.meter.masuk:,} · keluar {sesi.meter.keluar:,} · {sesi.meter.detik:.1f} s")
+
+
+def pratinjau(berkas_docx, halaman=1, dpi=70):
+    """Render halaman dokumen .docx ke PNG (LibreOffice -> PDF -> PyMuPDF) untuk ditampilkan di notebook."""
+    import shutil
+    soffice = shutil.which("soffice") or shutil.which("libreoffice")
+    if not soffice:
+        raise RuntimeError("LibreOffice belum terpasang (sel 0.3 memasangnya di latar)")
+    folder = os.path.dirname(os.path.abspath(berkas_docx))
+    subprocess.run([soffice, "--headless", "--convert-to", "pdf", "--outdir", folder, berkas_docx],
+                   check=True, capture_output=True, timeout=180)
+    import pymupdf
+    doc = pymupdf.open(os.path.splitext(os.path.abspath(berkas_docx))[0] + ".pdf")
+    png = os.path.splitext(os.path.abspath(berkas_docx))[0] + f"-{halaman}.png"
+    doc[halaman - 1].get_pixmap(dpi=dpi).save(png)
+    return png
+
+
 def picu(permintaan, katalog, hari_ini=HARI_INI):
     """Uji pemicuan: skill apa yang dimuat model PERTAMA KALI untuk permintaan ini (None = tidak memuat skill)."""
     msg = chat([{"role": "system", "content": prompt_sistem(katalog, "skill", hari_ini)},

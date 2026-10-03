@@ -6,7 +6,7 @@ allowed-tools: isi_memo_pengadaan
 
 # Pengadaan barang/jasa (SOP-PGD-01) — varian template/pseudokode
 
-1. Kumpulkan data pemohon, barang/jasa, tanggal kebutuhan, sumber anggaran, dan alasan; tanyakan yang belum ada.
+1. Kumpulkan data pemohon, barang/jasa, tanggal kebutuhan, sumber anggaran, dan alasan; tanyakan yang belum ada. Bila semuanya sudah ada, LANGSUNG panggil tool — jangan meminta konfirmasi dulu; memo masih draf dan bisa direvisi. Spesifikasi yang singkat (mis. "printer laser A3") dipakai apa adanya.
 2. Hitung dan isi field berikut dengan algoritma ini, lalu panggil `isi_memo_pengadaan`:
 
 ```

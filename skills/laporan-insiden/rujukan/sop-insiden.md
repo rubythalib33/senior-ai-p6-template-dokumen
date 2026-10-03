@@ -15,8 +15,8 @@ Kecelakaan kerja, keluhan SDM, dan kerusakan fasilitas gedung BUKAN insiden laya
 
 ## Pasal 3 · Urgensi
 - **Tinggi**: gangguan masih berlangsung dan berdampak finansial/hukum, atau memburuk dengan cepat.
-- **Sedang**: perlu ditangani pada hari yang sama.
-- **Rendah**: dapat dijadwalkan.
+- **Sedang**: masih berlangsung atau berpotensi berulang, dan perlu ditangani pada hari yang sama.
+- **Rendah**: dapat dijadwalkan, atau gangguan sudah pulih dan tidak berulang (laporan dibuat setelah kejadian).
 
 ## Pasal 4 · Matriks severity
 | Urgensi \ Dampak | Tinggi | Sedang | Rendah |
