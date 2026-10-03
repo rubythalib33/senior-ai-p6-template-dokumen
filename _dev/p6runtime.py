@@ -412,7 +412,22 @@ class Sesi:
         return {"status": "dibuat", "berkas": os.path.basename(berkas), "ringkasan": ringkasan, "peringatan": peringatan}
 
 
-def jalankan_agent(permintaan, katalog, mode="skill", riwayat=None, **kw):
+MINTA_DOKUMEN = re.compile(r"\b(buat|buatkan|bikin|bikinkan|susun|susunkan|siapkan|ajukan|mengajukan|jadikan|"
+                           r"dokumentasikan|laporkan)\b", re.I)
+MINTA_DATA = re.compile(r"\?|\b(mohon|silakan|tolong|perlu|memerlukan|membutuhkan)\b.{0,80}\b(informasi|sebutkan|berikan|"
+                        r"lengkapi|data|detail|konfirmasi)", re.I | re.S)
+DORONG = ("Catatan sistem: Anda belum memanggil tool dokumen. Bila semua data wajib sudah disebut pengguna, panggil tool "
+          "dokumen sekarang (draf masih bisa direvisi). Bila belum lengkap, tanyakan data yang kurang kepada pengguna.")
+
+
+def perlu_didorong(sesi, permintaan, teks):
+    """Penjaga runtime: model kecil kadang menyajikan 'draf' sebagai teks alih-alih memanggil tool dokumen.
+    Dorong SEKALI bila pengguna jelas meminta dokumen, tool dokumen sudah aktif, belum ada dokumen, dan model tidak bertanya."""
+    return (not sesi.dokumen and not getattr(sesi, "didorong", False) and MINTA_DOKUMEN.search(permintaan)
+            and any(t["function"]["name"].startswith("isi_") for t in sesi.tools()) and not MINTA_DATA.search(teks))
+
+
+def jalankan_agent(permintaan, katalog, mode="skill", riwayat=None, penjaga=True, **kw):
     """Satu permintaan pengguna -> loop LLM + tool sampai model menjawab tanpa tool (atau anggaran giliran habis)."""
     sesi = Sesi(katalog, mode, **kw)
     pesan = [{"role": "system", "content": prompt_sistem(katalog, mode, sesi.hari_ini)}] + list(riwayat or []) \
@@ -424,8 +439,14 @@ def jalankan_agent(permintaan, katalog, mode="skill", riwayat=None, **kw):
         sesi._catat("llm", giliran=g + 1, tool=[c["function"]["name"] for c in panggilan],
                     token_masuk=sesi.meter.masuk, token_keluar=sesi.meter.keluar)
         if not panggilan:
-            sesi.jawaban = (msg.get("content") or "").strip()
-            pesan.append({"role": "assistant", "content": sesi.jawaban})
+            teks = (msg.get("content") or "").strip()
+            pesan.append({"role": "assistant", "content": teks})
+            if penjaga and perlu_didorong(sesi, permintaan, teks):
+                sesi.didorong = True
+                sesi._catat("penjaga", pesan=DORONG)
+                pesan.append({"role": "user", "content": DORONG})
+                continue
+            sesi.jawaban = teks
             break
         pesan.append({"role": "assistant", "content": msg.get("content") or "", "tool_calls": panggilan})
         for c in panggilan:
@@ -446,6 +467,9 @@ def jalankan_agent(permintaan, katalog, mode="skill", riwayat=None, **kw):
 def cetak_trace(sesi):
     """Tampilkan jejak satu sesi: kapan skill dimuat, rujukan dibaca, tool dipanggil, dan hasilnya."""
     for t in sesi.trace:
+        if t["jenis"] == "penjaga":
+            print(f"{t['t']:6.1f}s  PENJAGA model menjawab tanpa memanggil tool dokumen -> didorong sekali")
+            continue
         if t["jenis"] == "llm":
             arah = ", ".join(t["tool"]) if t["tool"] else "jawaban akhir"
             print(f"{t['t']:6.1f}s  LLM   giliran {t['giliran']} -> {arah}   (token masuk kumulatif {t['token_masuk']:,})")
