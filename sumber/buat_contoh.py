@@ -1,7 +1,6 @@
 """Buat contoh/<template>.json (argumen LLM + field program), validasi, render ke contoh/hasil/, dan pratinjau PNG.
 
-Angka SOP di sini (ambang metode, tarif perjalanan, matriks severity) hanya ilustrasi untuk contoh;
-aturan resminya ditulis sebagai skill di notebook Pertemuan 6.
+Field program dihitung oleh skrip skill di skills/<skill>/skrip/hitung.py (aturan SOP), bukan diketik tangan.
 
 Jalankan dari root repo:  python sumber/buat_contoh.py   (pratinjau PNG butuh Microsoft Word + PyMuPDF di Windows)
 """
@@ -179,6 +178,22 @@ def contoh_penawaran():
     return llm, program
 
 
+SKILL_TEMPLATE = {"memo_pengadaan": ("pengadaan-barang-jasa", "2026-10-05"), "sppd": ("perjalanan-dinas", "2026-10-06"),
+                  "nota_dinas": ("nota-dinas", "2026-10-07"), "notulen_rapat": ("notulen-rapat", "2026-10-08"),
+                  "laporan_insiden": ("laporan-insiden", "2026-10-09"), "surat_penawaran": ("surat-penawaran", "2026-10-05")}
+
+
+def program_dari_skill(nama, llm, register):
+    """Field program dihitung oleh skrip skill (SOP), sama seperti di runtime notebook."""
+    skill, hari_ini = SKILL_TEMPLATE[nama]
+    skrip = os.path.join(ROOT, "skills", skill, "skrip", "hitung.py")
+    masuk = json.dumps({"argumen": llm, "hari_ini": hari_ini, "register": register}, ensure_ascii=False).encode("utf8")
+    r = subprocess.run([sys.executable, skrip], input=masuk, capture_output=True, timeout=60)
+    hasil = json.loads(r.stdout.decode("utf8"))
+    assert hasil["ok"], (nama, hasil)
+    return hasil["program"], hasil["ringkasan"]
+
+
 CONTOH = {"memo_pengadaan": contoh_memo, "sppd": contoh_sppd, "nota_dinas": contoh_nota,
           "notulen_rapat": contoh_notulen, "laporan_insiden": contoh_insiden, "surat_penawaran": contoh_penawaran}
 
@@ -195,9 +210,13 @@ def ke_pdf_word(docx_paths):
 if __name__ == "__main__":
     hasil = os.path.join(ROOT, "contoh", "hasil")
     os.makedirs(hasil, exist_ok=True)
+    if os.path.exists(os.path.join(hasil, "register_contoh.json")):
+        os.remove(os.path.join(hasil, "register_contoh.json"))
     keluaran = []
     for nama in NAMA_TEMPLATE:
-        llm, program = CONTOH[nama]()
+        llm, _ilustrasi = CONTOH[nama]()
+        program, ringkasan = program_dari_skill(nama, llm, os.path.join(hasil, "register_contoh.json"))
+        print("  ", ringkasan)
         galat = validasi(nama, llm)
         assert not galat, (nama, galat)
         with open(os.path.join(ROOT, "contoh", nama + ".json"), "w", encoding="utf8") as f:

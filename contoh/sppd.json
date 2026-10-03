@@ -11,7 +11,7 @@
     "moda_transportasi": "Pesawat"
   },
   "program": {
-    "nomor": "SPPD/DAI/2026/10/0117",
+    "nomor": "SPPD/DAI/2026/10/0001",
     "tanggal": "6 Oktober 2026",
     "pemberi_tugas": "Kepala Divisi Data & AI",
     "nama_pemberi_tugas": "Hendra Wijaya",
@@ -29,7 +29,7 @@
       },
       {
         "no": 2,
-        "komponen": "Penginapan",
+        "komponen": "Penginapan (batas atas)",
         "volume": 2,
         "satuan": "malam",
         "tarif": "1.250.000",
@@ -37,7 +37,7 @@
       },
       {
         "no": 3,
-        "komponen": "Tiket pesawat pergi-pulang (perkiraan)",
+        "komponen": "Tiket pesawat pergi-pulang (estimasi, at cost)",
         "volume": 1,
         "satuan": "paket",
         "tarif": "4.200.000",

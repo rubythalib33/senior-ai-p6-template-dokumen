@@ -28,17 +28,41 @@ Pratinjau hasil render ada di [`pratinjau/`](pratinjau/) dan contoh berkasnya di
 ```
 templates/<nama>.docx     template docxtpl (Jinja di dalam Word)
 skema/<nama>.json         {"tool": definisi function calling (field LLM), "field_program": field yang diisi program}
-contoh/<nama>.json        {"llm": argumen contoh dari LLM, "program": field program contoh}
-contoh/hasil/             hasil render contoh (.docx dan .pdf)
 render.py                 tools(), validasi(), render(), rupiah(), terbilang_rupiah(), tanggal_id()
+skills/<nama>/            7 skill format SKILL.md standar (frontmatter name/description/allowed-tools)
+  ├── SKILL.md            prosedur untuk model
+  ├── rujukan/*.md        SOP lengkap — dibaca hanya bila perlu
+  ├── skrip/hitung.py     aturan SOP yang harus konsisten (stdin JSON -> stdout JSON, tanpa traceback)
+  └── data/*.json         tabel ambang / tarif / matriks yang dibaca skrip
+skills/_bersama/          utilitas bersama skrip (data organisasi, penomoran, pembungkus galat)
+skills_varian/            skill pengadaan versi naratif & pseudokode (eksperimen tingkat kebebasan)
+golden/                   pemicuan.json (50), skenario.json (27), kebebasan.json (4), deskripsi_awal.json
+latihan/                  contoh SOP peminjaman aset TI: skill draf v1, perbaikan v2, 4 skenario
+contoh/<nama>.json        {"llm": argumen contoh, "program": field program yang DIHITUNG skrip skill}
+contoh/hasil/             hasil render contoh (.docx dan .pdf)
 sumber/                   kode pembangun template, skema, dan contoh (reproducible)
 ```
+
+## Tujuh skill back-office (v1.1)
+
+| Skill | Dipakai ketika | Tool | Skrip SOP |
+|---|---|---|---|
+| `pengadaan-barang-jasa` | unit membeli/menyewa dari vendor (termasuk penawaran DARI vendor) | `isi_memo_pengadaan` | metode, penawaran pembanding, persetujuan, lampiran, pemecahan paket |
+| `surat-penawaran` | KITA menjual layanan ke klien | `isi_surat_penawaran` | PPN, masa berlaku, penanda tangan menurut nilai |
+| `perjalanan-dinas` | pegawai ditugaskan ke kota lain | `isi_sppd` | kategori kota, uang harian, penginapan, tiket, pemberi tugas |
+| `nota-dinas` | surat resmi internal antar-unit | `isi_nota_dinas` | penomoran, cek jabatan & singkatan tidak baku |
+| `notulen-rapat` | rapat yang sudah berlangsung | `isi_notulen_rapat` | penomoran, tindak lanjut tanpa PIC/tenggat, tenggat peredaran |
+| `laporan-insiden` | gangguan/insiden layanan TI | `isi_laporan_insiden` | matriks severity, penanggung jawab, postmortem |
+| `cuti-dan-izin` | pertanyaan cuti & izin | – | – (skill pengetahuan saja) |
+
+Runtime yang memuat skill ini secara bertahap (metadata → `SKILL.md` → rujukan/skrip) ada di notebook Pertemuan 6;
+foldernya juga bisa langsung dipakai di Claude Code (`.claude/skills/`). Uji unit skrip: 30 kasus tanpa LLM.
 
 ## Pakai di Google Colab
 
 ```python
-!wget -q https://github.com/rubythalib33/senior-ai-p6-template-dokumen/archive/refs/tags/v1.0.zip -O tpl.zip
-!unzip -q -o tpl.zip && mv senior-ai-p6-template-dokumen-1.0 template_dokumen
+!wget -q https://github.com/rubythalib33/senior-ai-p6-template-dokumen/archive/refs/tags/v1.1.zip -O tpl.zip
+!unzip -q -o tpl.zip && mv senior-ai-p6-template-dokumen-1.1 template_dokumen
 !pip install -q docxtpl jsonschema
 import sys; sys.path.insert(0, "template_dokumen")
 from render import tools, validasi, render, rupiah, terbilang_rupiah, tanggal_id
@@ -47,7 +71,7 @@ from render import tools, validasi, render, rupiah, terbilang_rupiah, tanggal_id
 Atau ambil satu berkas saja:
 
 ```bash
-wget -q https://raw.githubusercontent.com/rubythalib33/senior-ai-p6-template-dokumen/v1.0/templates/memo_pengadaan.docx
+wget -q https://raw.githubusercontent.com/rubythalib33/senior-ai-p6-template-dokumen/v1.1/templates/memo_pengadaan.docx
 ```
 
 ## Alur function calling (vLLM / API kompatibel OpenAI)

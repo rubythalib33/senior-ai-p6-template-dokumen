@@ -1,0 +1,37 @@
+[
+ {
+  "tanggal": "2026-08-20",
+  "unit": "Divisi Data & AI",
+  "uraian": "Laptop pengembang",
+  "jenis": "Barang",
+  "nilai": 96000000
+ },
+ {
+  "tanggal": "2026-06-02",
+  "unit": "Divisi Data & AI",
+  "uraian": "Monitor 27 inci",
+  "jenis": "Barang",
+  "nilai": 38000000
+ },
+ {
+  "tanggal": "2026-09-15",
+  "unit": "Divisi SDM & Umum",
+  "uraian": "Jasa kebersihan gedung",
+  "jenis": "Jasa lainnya",
+  "nilai": 216000000
+ },
+ {
+  "tanggal": "2026-09-28",
+  "unit": "Divisi Teknologi Informasi",
+  "uraian": "Lisensi antivirus",
+  "jenis": "Barang",
+  "nilai": 42000000
+ },
+ {
+  "tanggal": "2026-07-10",
+  "unit": "Divisi Pemasaran",
+  "uraian": "Jasa konsultan riset pasar",
+  "jenis": "Jasa konsultansi",
+  "nilai": 45000000
+ }
+]

@@ -1,0 +1,130 @@
+{
+ "versi": "1.0",
+ "hari_ini": "2026-10-05",
+ "catatan": "Eksperimen tingkat kebebasan: skill pengadaan versi naratif, pseudokode, dan skrip pada memo yang melintasi semua ambang metode. Dinilai hanya nilai SOP (metode, penawaran, persetujuan, PPN, nomor).",
+ "skenario": [
+  {
+   "id": "PGD-1",
+   "skill": "pengadaan-barang-jasa",
+   "jenis": "dokumen",
+   "template": "memo_pengadaan",
+   "prompt": "Saya Dimas Prasetyo, Manajer Data Engineering di Divisi Data & AI. Tolong buatkan memo pengadaan 12 laptop pengembang (CPU 8 core, RAM 32 GB, SSD 1 TB) harga sekitar 18,5 juta per unit dan 12 docking station USB-C (2 layar eksternal) 2,15 juta per unit. Dibutuhkan paling lambat 16 November 2026, pakai anggaran Capex Divisi Data & AI 2026. Alasannya tim data bertambah 12 orang untuk proyek asisten back-office dan laptop lama tidak kuat menjalankan kontainer pengembangan.",
+   "cek_arg": {
+    "unit_pemohon": "Divisi Data & AI",
+    "jenis_pengadaan": "Barang",
+    "items[*].jumlah": [
+     12,
+     12
+    ],
+    "items[*].harga_satuan": [
+     18500000,
+     2150000
+    ],
+    "kebutuhan_tanggal": "2026-11-16",
+    "nama_pemohon": {
+     "regex": "dimas"
+    }
+   },
+   "cek_nilai": {
+    "metode": "Pemilihan langsung",
+    "min_penawaran": 3,
+    "persetujuan": [
+     "Kepala Divisi Data & AI",
+     "Kepala Divisi Keuangan",
+     "Direktur Operasional"
+    ],
+    "nomor": {
+     "regex": "^MPP/DAI/2026/10/\\d{4}$"
+    },
+    "ppn_persen": 11
+   },
+   "cek_peringatan": []
+  },
+  {
+   "id": "PGD-2",
+   "skill": "pengadaan-barang-jasa",
+   "jenis": "dokumen",
+   "template": "memo_pengadaan",
+   "prompt": "Saya Sinta Maharani, Supervisor Sekretariat di Divisi SDM & Umum. Tolong buatkan memo pengadaan 10 kursi ergonomis (sandaran jaring, penyangga lengan dapat diatur) harga sekitar 2,4 juta per unit. Dibutuhkan paling lambat 30 Oktober 2026, sumber anggaran Opex Divisi SDM & Umum 2026. Kursi ruang sekretariat sudah rusak dan banyak dikeluhkan karyawan.",
+   "cek_arg": {
+    "unit_pemohon": "Divisi SDM & Umum",
+    "jenis_pengadaan": "Barang",
+    "items[*].jumlah": [
+     10
+    ],
+    "items[*].harga_satuan": [
+     2400000
+    ],
+    "kebutuhan_tanggal": "2026-10-30"
+   },
+   "cek_nilai": {
+    "metode": "Pembelian langsung",
+    "min_penawaran": 1,
+    "persetujuan": [
+     "Kepala Divisi SDM & Umum"
+    ],
+    "nomor": {
+     "regex": "^MPP/SDM/2026/10/\\d{4}$"
+    },
+    "ppn_persen": 11
+   },
+   "cek_peringatan": []
+  },
+  {
+   "id": "KBB-3",
+   "skill": "pengadaan-barang-jasa",
+   "jenis": "dokumen",
+   "template": "memo_pengadaan",
+   "prompt": "Saya Andini Putri, Kepala Divisi Pemasaran. Buatkan memo pengadaan jasa konsultan riset pasar untuk produk baru: 1 paket studi 8 minggu seharga 108 juta. Dibutuhkan paling lambat 15 Desember 2026, anggaran Opex Divisi Pemasaran 2026. Kami belum punya data ukuran pasar segmen UMKM sehingga rencana peluncuran kuartal I 2027 berisiko meleset.",
+   "cek_arg": {
+    "unit_pemohon": "Divisi Pemasaran",
+    "jenis_pengadaan": "Jasa konsultansi",
+    "items[*].harga_satuan": [
+     108000000
+    ]
+   },
+   "cek_nilai": {
+    "metode": "Seleksi",
+    "min_penawaran": 3,
+    "persetujuan": [
+     "Kepala Divisi Pemasaran",
+     "Kepala Divisi Keuangan"
+    ],
+    "ppn_persen": 11,
+    "nomor": {
+     "regex": "^MPP/MKT/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": []
+  },
+  {
+   "id": "KBB-4",
+   "skill": "pengadaan-barang-jasa",
+   "jenis": "dokumen",
+   "template": "memo_pengadaan",
+   "prompt": "Saya Fajar Nugroho, Kepala Divisi Operasional. Tolong buatkan memo pengadaan renovasi lantai 7 seluas 600 meter persegi sebagai 1 paket pekerjaan seharga 1,2 miliar. Dibutuhkan selesai paling lambat 31 Maret 2027, anggaran Capex Divisi Operasional 2026. Lantai 7 akan dipakai tim baru 80 orang dan instalasi listriknya belum memenuhi standar.",
+   "cek_arg": {
+    "unit_pemohon": "Divisi Operasional",
+    "jenis_pengadaan": "Pekerjaan konstruksi",
+    "items[*].harga_satuan": [
+     1200000000
+    ]
+   },
+   "cek_nilai": {
+    "metode": "Tender",
+    "min_penawaran": 3,
+    "persetujuan": [
+     "Kepala Divisi Operasional",
+     "Kepala Divisi Keuangan",
+     "Direktur Operasional",
+     "Direktur Utama"
+    ],
+    "ppn_persen": 11,
+    "nomor": {
+     "regex": "^MPP/OPS/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": []
+  }
+ ]
+}

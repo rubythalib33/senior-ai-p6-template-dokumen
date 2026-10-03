@@ -1,0 +1,495 @@
+{
+ "versi": "1.0",
+ "hari_ini": "2026-10-05",
+ "catatan": "cek_arg = field yang diisi LLM; cek_nilai = nilai yang ditentukan SOP (dihitung skrip skill pada mode skill, diisi model pada mode tanpa skrip); cek_peringatan hanya dinilai pada mode skill.",
+ "skenario": [
+  {
+   "id": "PGD-1",
+   "skill": "pengadaan-barang-jasa",
+   "jenis": "dokumen",
+   "template": "memo_pengadaan",
+   "prompt": "Saya Dimas Prasetyo, Manajer Data Engineering di Divisi Data & AI. Tolong buatkan memo pengadaan 12 laptop pengembang (CPU 8 core, RAM 32 GB, SSD 1 TB) harga sekitar 18,5 juta per unit dan 12 docking station USB-C (2 layar eksternal) 2,15 juta per unit. Dibutuhkan paling lambat 16 November 2026, pakai anggaran Capex Divisi Data & AI 2026. Alasannya tim data bertambah 12 orang untuk proyek asisten back-office dan laptop lama tidak kuat menjalankan kontainer pengembangan.",
+   "cek_arg": {
+    "unit_pemohon": "Divisi Data & AI",
+    "jenis_pengadaan": "Barang",
+    "items[*].jumlah": [
+     12,
+     12
+    ],
+    "items[*].harga_satuan": [
+     18500000,
+     2150000
+    ],
+    "kebutuhan_tanggal": "2026-11-16",
+    "nama_pemohon": {
+     "regex": "dimas"
+    }
+   },
+   "cek_nilai": {
+    "metode": "Pemilihan langsung",
+    "min_penawaran": 3,
+    "persetujuan": [
+     "Kepala Divisi Data & AI",
+     "Kepala Divisi Keuangan",
+     "Direktur Operasional"
+    ],
+    "nomor": {
+     "regex": "^MPP/DAI/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": [
+    "Pasal 9"
+   ]
+  },
+  {
+   "id": "PGD-2",
+   "skill": "pengadaan-barang-jasa",
+   "jenis": "dokumen",
+   "template": "memo_pengadaan",
+   "prompt": "Saya Sinta Maharani, Supervisor Sekretariat di Divisi SDM & Umum. Tolong buatkan memo pengadaan 10 kursi ergonomis (sandaran jaring, penyangga lengan dapat diatur) harga sekitar 2,4 juta per unit. Dibutuhkan paling lambat 30 Oktober 2026, sumber anggaran Opex Divisi SDM & Umum 2026. Kursi ruang sekretariat sudah rusak dan banyak dikeluhkan karyawan.",
+   "cek_arg": {
+    "unit_pemohon": "Divisi SDM & Umum",
+    "jenis_pengadaan": "Barang",
+    "items[*].jumlah": [
+     10
+    ],
+    "items[*].harga_satuan": [
+     2400000
+    ],
+    "kebutuhan_tanggal": "2026-10-30"
+   },
+   "cek_nilai": {
+    "metode": "Pembelian langsung",
+    "min_penawaran": 1,
+    "persetujuan": [
+     "Kepala Divisi SDM & Umum"
+    ],
+    "nomor": {
+     "regex": "^MPP/SDM/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": []
+  },
+  {
+   "id": "PGD-3",
+   "skill": "pengadaan-barang-jasa",
+   "jenis": "tanya_balik",
+   "prompt": "Tolong buatkan memo pengadaan proyektor untuk ruang rapat lantai 7.",
+   "cek_jawaban": [
+    "jumlah|berapa unit|harga|anggaran|nama|jabatan"
+   ]
+  },
+  {
+   "id": "PGD-4",
+   "skill": "pengadaan-barang-jasa",
+   "jenis": "tanya",
+   "prompt": "Pengadaan jasa konsultan senilai 120 juta harus memakai metode apa dan butuh berapa penawaran pembanding?",
+   "cek_jawaban": [
+    "seleksi",
+    "\\b(3|tiga)\\b"
+   ]
+  },
+  {
+   "id": "PGD-5",
+   "skill": "pengadaan-barang-jasa",
+   "jenis": "dokumen",
+   "template": "memo_pengadaan",
+   "prompt": "Vendor PT Sinar Komputindo mengirim penawaran 3 unit printer laser A3 seharga 4,5 juta per unit. Saya Bayu Saputra, Staf Pengadaan di Divisi Operasional, mau mengajukan pembeliannya untuk ruang arsip. Dibutuhkan paling lambat 2 November 2026, anggaran Opex Divisi Operasional 2026, karena printer lama sering macet dan suku cadangnya sudah tidak tersedia.",
+   "cek_arg": {
+    "unit_pemohon": "Divisi Operasional",
+    "jenis_pengadaan": "Barang",
+    "items[*].jumlah": [
+     3
+    ],
+    "items[*].harga_satuan": [
+     4500000
+    ],
+    "kebutuhan_tanggal": "2026-11-02"
+   },
+   "cek_nilai": {
+    "metode": "Pembelian langsung",
+    "min_penawaran": 1,
+    "persetujuan": [
+     "Kepala Divisi Operasional"
+    ],
+    "nomor": {
+     "regex": "^MPP/OPS/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": []
+  },
+  {
+   "id": "PD-1",
+   "skill": "perjalanan-dinas",
+   "jenis": "dokumen",
+   "template": "sppd",
+   "prompt": "Buatkan SPPD untuk Rina Kartika, Manajer Implementasi AI di Divisi Data & AI, ke Makassar tanggal 13 sampai 15 Oktober 2026 naik pesawat, untuk pendampingan go-live asisten back-office di kantor cabang Makassar.",
+   "cek_arg": {
+    "tingkat": "Manajer",
+    "unit": "Divisi Data & AI",
+    "kota_tujuan": {
+     "regex": "^makassar$"
+    },
+    "tanggal_berangkat": "2026-10-13",
+    "tanggal_kembali": "2026-10-15",
+    "moda_transportasi": "Pesawat"
+   },
+   "cek_nilai": {
+    "pemberi_tugas": "Kepala Divisi Data & AI",
+    "uang_harian": 530000,
+    "penginapan": 1250000,
+    "total": 9190000,
+    "nomor": {
+     "regex": "^SPPD/DAI/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": []
+  },
+  {
+   "id": "PD-2",
+   "skill": "perjalanan-dinas",
+   "jenis": "dokumen",
+   "template": "sppd",
+   "prompt": "Tolong buatkan surat perintah perjalanan dinas untuk Rudi Hartono, Staf Infrastruktur di Divisi Teknologi Informasi, ke Bandung naik kereta api tanggal 8 sampai 9 Oktober 2026 untuk instalasi jaringan di kantor cabang Bandung.",
+   "cek_arg": {
+    "tingkat": "Staf",
+    "unit": "Divisi Teknologi Informasi",
+    "kota_tujuan": {
+     "regex": "^bandung$"
+    },
+    "tanggal_berangkat": "2026-10-08",
+    "tanggal_kembali": "2026-10-09",
+    "moda_transportasi": "Kereta api"
+   },
+   "cek_nilai": {
+    "pemberi_tugas": "Kepala Divisi Teknologi Informasi",
+    "uang_harian": 350000,
+    "penginapan": 600000,
+    "total": 2200000,
+    "nomor": {
+     "regex": "^SPPD/TI/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": []
+  },
+  {
+   "id": "PD-3",
+   "skill": "perjalanan-dinas",
+   "jenis": "tanya",
+   "prompt": "Berapa uang harian untuk Kepala Divisi yang dinas ke Surabaya?",
+   "cek_jawaban": [
+    "650[.,]?000|650 ribu"
+   ]
+  },
+  {
+   "id": "PD-4",
+   "skill": "perjalanan-dinas",
+   "jenis": "tanya_balik",
+   "prompt": "Buatkan SPPD untuk saya ke Medan minggu depan.",
+   "cek_jawaban": [
+    "nama|jabatan|tanggal|maksud|tujuan|moda"
+   ]
+  },
+  {
+   "id": "ND-1",
+   "skill": "nota-dinas",
+   "jenis": "dokumen",
+   "template": "nota_dinas",
+   "prompt": "Buatkan nota dinas dari Kepala Divisi Data & AI (Hendra Wijaya) kepada Kepala Divisi Keuangan, tembusan Direktur Operasional, sifat segera, lampiran 1 berkas. Perihalnya permohonan akses data transaksi penagihan periode Januari 2024 sampai September 2026 untuk pilot model prediksi keterlambatan pembayaran. Kami mohon persetujuan paling lambat 16 Oktober 2026.",
+   "cek_arg": {
+    "kepada": {
+     "regex": "kepala divisi keuangan"
+    },
+    "dari": {
+     "regex": "kepala divisi data (&|dan) ai"
+    },
+    "sifat": "Segera",
+    "tembusan": {
+     "berisi": "direktur operasional"
+    },
+    "nama_penandatangan": {
+     "regex": "hendra"
+    }
+   },
+   "cek_nilai": {
+    "nomor": {
+     "regex": "^ND/DAI/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": []
+  },
+  {
+   "id": "ND-2",
+   "skill": "nota-dinas",
+   "jenis": "dokumen",
+   "template": "nota_dinas",
+   "prompt": "Tolong buat nota dinas dari Kepala Divisi Teknologi Informasi (Agus Salim) untuk seluruh Kepala Divisi: pemberitahuan pemeliharaan server email pada Sabtu, 10 Oktober 2026 pukul 22.00 sampai 02.00 WIB; selama itu email tidak bisa diakses. Sifatnya biasa, tanpa lampiran dan tanpa tembusan.",
+   "cek_arg": {
+    "kepada": {
+     "regex": "kepala divisi"
+    },
+    "dari": {
+     "regex": "teknologi informasi"
+    },
+    "sifat": "Biasa",
+    "nama_penandatangan": {
+     "regex": "agus"
+    }
+   },
+   "cek_nilai": {
+    "nomor": {
+     "regex": "^ND/TI/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": []
+  },
+  {
+   "id": "ND-3",
+   "skill": "nota-dinas",
+   "jenis": "tanya",
+   "prompt": "Bagaimana format nomor nota dinas yang benar di kantor kita?",
+   "cek_jawaban": [
+    "ND/"
+   ]
+  },
+  {
+   "id": "RPT-1",
+   "skill": "notulen-rapat",
+   "jenis": "dokumen",
+   "template": "notulen_rapat",
+   "prompt": "Tolong buatkan notulen rapat. Rapat koordinasi persiapan audit ISO 27001, Jumat 2 Oktober 2026, pukul 09.00-10.30 WIB di Ruang Rapat Lt. 5, dipimpin Agus Salim, notulis Dewi Anggraini. Hadir: Agus Salim, Dewi Anggraini, Rudi Hartono, Lestari Wulandari. Agenda: (1) status dokumen kebijakan keamanan, (2) jadwal audit internal. Pembahasan: dokumen kebijakan 80% selesai, tinggal prosedur backup; audit internal diusulkan minggu ketiga Oktober. Keputusan: audit internal dilaksanakan 19-21 Oktober 2026 dan prosedur backup difinalkan Rudi. Tindak lanjut: Rudi Hartono memfinalkan prosedur backup paling lambat 9 Oktober 2026; Dewi Anggraini mengirim undangan audit internal ke semua divisi paling lambat 7 Oktober 2026.",
+   "cek_arg": {
+    "tanggal_rapat": "2026-10-02",
+    "waktu_mulai": "09:00",
+    "waktu_selesai": "10:30",
+    "peserta": {
+     "panjang": 4
+    },
+    "tindak_lanjut[*].pic": [
+     {
+      "regex": "rudi"
+     },
+     {
+      "regex": "dewi"
+     }
+    ],
+    "tindak_lanjut[*].tenggat": [
+     "2026-10-09",
+     "2026-10-07"
+    ]
+   },
+   "cek_nilai": {
+    "nomor": {
+     "regex": "^NOT/SEK/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": []
+  },
+  {
+   "id": "RPT-2",
+   "skill": "notulen-rapat",
+   "jenis": "dokumen",
+   "template": "notulen_rapat",
+   "prompt": "Buat notulen dari catatan ini: rapat evaluasi vendor katering, Senin 5 Oktober 2026 jam 13.00-14.00 di ruang rapat Lt. 3, pimpinan Yuliana Siregar, notulis Sari Utami. Peserta: Yuliana Siregar, Sari Utami, Bayu Saputra. Dibahas keluhan menu yang berulang dan keterlambatan pengiriman makan siang. Disepakati vendor diberi surat teguran. Tindak lanjut: siapkan surat teguran ke vendor; cari dua vendor pembanding.",
+   "cek_arg": {
+    "tanggal_rapat": "2026-10-05",
+    "peserta": {
+     "panjang": 3
+    },
+    "tindak_lanjut[*].pic": [
+     "",
+     ""
+    ]
+   },
+   "cek_nilai": {
+    "nomor": {
+     "regex": "^NOT/SEK/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": [
+    "PIC"
+   ]
+  },
+  {
+   "id": "RPT-3",
+   "skill": "notulen-rapat",
+   "jenis": "tanya",
+   "prompt": "Notulen rapat harus diedarkan paling lambat kapan setelah rapat?",
+   "cek_jawaban": [
+    "(1|satu) hari kerja"
+   ]
+  },
+  {
+   "id": "INS-1",
+   "skill": "laporan-insiden",
+   "jenis": "dokumen",
+   "template": "laporan_insiden",
+   "prompt": "Aplikasi absensi tidak bisa diakses oleh seluruh karyawan sejak pukul 07.45 hari ini dan sampai sekarang belum pulih; terdeteksi pukul 08.05 dari keluhan di grup. Dugaan sementara sertifikat SSL kedaluwarsa, akar masalah masih diinvestigasi. Tindakan sejauh ini: tim TI sedang memperbarui sertifikat. Pelapor: Rudi Hartono. Buatkan laporan insidennya.",
+   "cek_arg": {
+    "dampak": "Tinggi",
+    "urgensi": "Tinggi",
+    "waktu_mulai": "2026-10-05 07:45",
+    "waktu_pulih": ""
+   },
+   "cek_nilai": {
+    "severity": "P1",
+    "penanggung_jawab": "Direktur Operasional",
+    "nomor": {
+     "regex": "^INS/TI/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": []
+  },
+  {
+   "id": "INS-2",
+   "skill": "laporan-insiden",
+   "jenis": "dokumen",
+   "template": "laporan_insiden",
+   "prompt": "Tolong buat laporan insiden: VPN kantor putus untuk tim sales (sekitar 30 orang) mulai pukul 10.15 sampai 10.55 hari ini, terdeteksi 10.20. Penyebabnya konfigurasi firewall yang salah saat pemeliharaan dan sudah dikembalikan; tidak ada data hilang dan tidak berulang. Pelapor Bayu Saputra. Tindak lanjut: wajibkan review perubahan firewall oleh dua orang, PIC Agus Salim, tenggat 16 Oktober 2026.",
+   "cek_arg": {
+    "dampak": "Sedang",
+    "urgensi": "Rendah",
+    "waktu_mulai": "2026-10-05 10:15",
+    "waktu_pulih": "2026-10-05 10:55"
+   },
+   "cek_nilai": {
+    "severity": "P4",
+    "penanggung_jawab": "Supervisor Service Desk",
+    "nomor": {
+     "regex": "^INS/TI/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": []
+  },
+  {
+   "id": "INS-3",
+   "skill": "laporan-insiden",
+   "jenis": "tanya",
+   "prompt": "Kalau dampaknya rendah tapi urgensinya tinggi, severity-nya apa dan target pemulihannya berapa lama?",
+   "cek_jawaban": [
+    "P3",
+    "(1|satu) hari kerja"
+   ]
+  },
+  {
+   "id": "PNW-1",
+   "skill": "surat-penawaran",
+   "jenis": "dokumen",
+   "template": "surat_penawaran",
+   "prompt": "Buatkan surat penawaran untuk PT Contoh Klien Sejahtera, Jl. Ilustrasi No. 8, Surabaya, U.p. Ibu Maya Lestari, Kepala Divisi Analitik. Kami menawarkan pelatihan Generative AI 3 hari untuk 25 peserta seharga 4,5 juta per peserta dan pendampingan use case 1 paket 25 juta, menindaklanjuti diskusi 2 Oktober 2026. Ruang lingkup: pelatihan praktik prompt engineering, RAG, dan evaluasi; lab cloud dengan GPU; pendampingan prototipe use case pertama. Pembayaran 50% setelah PO, 50% setelah BAST, berlaku 30 hari. Ditandatangani Andini Putri, Kepala Divisi Pemasaran.",
+   "cek_arg": {
+    "nama_klien": {
+     "regex": "contoh klien sejahtera"
+    },
+    "items[*].harga_satuan": [
+     4500000,
+     25000000
+    ],
+    "items[*].jumlah": [
+     25,
+     1
+    ],
+    "masa_berlaku_hari": 30
+   },
+   "cek_nilai": {
+    "penandatangan": "Kepala Divisi Pemasaran",
+    "total": 152625000,
+    "nomor": {
+     "regex": "^PNW/MKT/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": []
+  },
+  {
+   "id": "PNW-2",
+   "skill": "surat-penawaran",
+   "jenis": "dokumen",
+   "template": "surat_penawaran",
+   "prompt": "Siapkan quotation untuk PT Bahtera Logistik Nusantara, Jl. Contoh Pelabuhan No. 3, Surabaya, U.p. Bapak Hendro Wibisono, Direktur Operasional. Mereka butuh asisten AI untuk layanan pelanggan. Kami tawarkan 1 paket implementasi Rp650 juta dan dukungan teknis 12 bulan Rp15 juta per bulan. Ruang lingkup: implementasi, integrasi ke sistem tiket, dan dukungan teknis. Berlaku 30 hari, pembayaran 50% di muka dan 50% setelah BAST. Yang tanda tangan Andini Putri, Kepala Divisi Pemasaran.",
+   "cek_arg": {
+    "items[*].harga_satuan": [
+     650000000,
+     15000000
+    ],
+    "items[*].jumlah": [
+     1,
+     12
+    ],
+    "masa_berlaku_hari": 30
+   },
+   "cek_nilai": {
+    "penandatangan": "Direktur Komersial",
+    "total": 921300000,
+    "nomor": {
+     "regex": "^PNW/MKT/2026/10/\\d{4}$"
+    }
+   },
+   "cek_peringatan": [
+    "Pasal 6"
+   ]
+  },
+  {
+   "id": "PNW-3",
+   "skill": "surat-penawaran",
+   "jenis": "tanya",
+   "prompt": "Penawaran harga kita ke klien berlaku berapa lama?",
+   "cek_jawaban": [
+    "30 hari"
+   ]
+  },
+  {
+   "id": "CUTI-1",
+   "skill": "cuti-dan-izin",
+   "jenis": "tanya",
+   "prompt": "Saya baru bekerja 8 bulan. Apakah saya sudah berhak cuti tahunan?",
+   "cek_jawaban": [
+    "belum|tidak",
+    "12 bulan"
+   ]
+  },
+  {
+   "id": "CUTI-2",
+   "skill": "cuti-dan-izin",
+   "jenis": "tanya",
+   "prompt": "Saya mau menikah bulan depan, dapat izin berapa hari?",
+   "cek_jawaban": [
+    "\\b(3|tiga) hari"
+   ]
+  },
+  {
+   "id": "CUTI-3",
+   "skill": "cuti-dan-izin",
+   "jenis": "tanya",
+   "prompt": "Sisa cuti tahun lalu masih bisa dipakai sampai kapan dan berapa banyak?",
+   "cek_jawaban": [
+    "30 juni",
+    "\\b(6|enam) hari"
+   ]
+  },
+  {
+   "id": "OOS-1",
+   "skill": null,
+   "jenis": "tolak",
+   "prompt": "Tolong kirim email ke vendor katering bahwa pembayaran sudah diproses.",
+   "cek_jawaban": [
+    "tidak (bisa|dapat)|tidak memiliki|di luar|belum bisa|tidak tersedia"
+   ]
+  },
+  {
+   "id": "OOS-2",
+   "skill": null,
+   "jenis": "tolak",
+   "prompt": "Tolong jadwalkan rapat dengan tim keuangan hari Kamis jam 10.",
+   "cek_jawaban": [
+    "tidak (bisa|dapat)|tidak memiliki|di luar|belum bisa|tidak tersedia"
+   ]
+  },
+  {
+   "id": "OOS-3",
+   "skill": null,
+   "jenis": "tolak",
+   "prompt": "Rekan kerja saya sering datang terlambat, apa yang sebaiknya saya lakukan?",
+   "cek_jawaban": []
+  }
+ ]
+}

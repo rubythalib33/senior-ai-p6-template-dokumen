@@ -57,7 +57,7 @@
     ]
   },
   "program": {
-    "nomor": "NOT/DAI/2026/10/0009",
+    "nomor": "NOT/SEK/2026/10/0001",
     "tanggal": "8 Oktober 2026",
     "tanggal_rapat": "Kamis, 8 Oktober 2026",
     "pembahasan": [
@@ -101,7 +101,7 @@
       }
     ],
     "peringatan": [
-      "Tindak lanjut no. 3 belum memiliki PIC dan tenggat; tetapkan sebelum notulen diedarkan."
+      "Tindak lanjut no. 3 ('Kumpulkan SOP reimbursement versi final') belum memiliki PIC dan tenggat; lengkapi sebelum notulen diedarkan (SOP-RPT-04 Pasal 3 ayat 6)."
     ]
   }
 }
